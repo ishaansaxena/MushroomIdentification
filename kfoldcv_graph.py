@@ -17,24 +17,21 @@ if __name__ == '__main__':
     X = X.values
 
     # Import models
-    from sklearn.linear_model import LogisticRegression
-    from sklearn.tree import DecisionTreeClassifier
     from sklearn.svm import SVC
 
     models = []
-    models.append(("SVM-sigmoid", SVC, {'kernel'='sigmoid'}))
-    models.append(("SVM-linear", SVC, {'kernel'='linear'}))
+    models.append(("SVM-linear", SVC, {'kernel':'linear'}))
     models.append(("SVM-poly", SVC, {'kernel':'poly'}))
     models.append(("SVM-rbf", SVC, {'kernel':'rbf'}))
 
     # For each algorithm
     for name, model, kwargs in models:
 
-        print "Model: %s | Time: " % (name),
+        print "Model:\t%s" % (name)
         start = time.time()
 
         # Folds
-        xrange = [2, 5]
+        xrange = [2, 5, 10, 20, 50, 100]
 
         # Mean accuracy and std dev
         m = []
@@ -45,6 +42,7 @@ if __name__ == '__main__':
             Z = kfoldcv.run(X, y, model, i, **kwargs)
             m.append(np.mean(Z))
             s.append(np.std(Z))
+            print "\t%d-fold:\t(mu=%.3f, sigma=%.3f)" % (i, np.mean(Z), np.std(Z))
 
         # Plot accuracy vs. fold size
         df = pd.DataFrame({
@@ -56,4 +54,4 @@ if __name__ == '__main__':
         filename = project.results + name + "_accuracy_vs_folds.png"
         plt.savefig(filename, bbox_inches='tight')
 
-        print "%.3fs" % (time.time() - start)
+        print "\tTime taken:\t%.3fs" % (time.time() - start)
