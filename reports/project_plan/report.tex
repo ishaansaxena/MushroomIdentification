@@ -1,0 +1,238 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{natbib}
+\usepackage{graphicx}
+
+\setlist[enumerate]{itemsep=0mm}
+
+\usepackage[top=0.8in,bottom=0.8in,left=0.8in,right=0.8in]{geometry}
+
+\newcommand{\somespace}{\vspace{0.075in}}
+
+\title{\textbf{PROJECT PLAN}}
+
+\author{\vspace{-0.6in}}
+
+\date{\vspace{-0.6in}}
+
+\begin{document}
+
+\maketitle
+
+\noindent \textbf{1. Students' name and Purdue e-mail.}
+\somespace
+
+\begin{enumerate}[label=\alph*.]
+    \item Nikita Rajaneesh | nrajanee@purdue.edu
+    \item Swaraj Bhaduri | sbhadur@purdue.edu
+    \item Utkarsh Jain | jain192@purdue.edu
+    \item Ishaan Saxena | isaxena@purdue.edu
+\end{enumerate}
+
+\somespace
+\noindent \textbf{2. Definition of the problem, possibly relevant to your interests.}
+\somespace
+
+Analysis of Mushroom Species Data by classification into groups of poisonous and edible
+based on features such as caps, odor, stalks, etc.
+
+\somespace
+\noindent \textbf{3. Description of the dataset (or datasets) to be used.}
+\somespace
+
+Attribute Information: (classes: edible=e, poisonous=p)
+
+\begin{enumerate}
+    \item \textbf{cap-shape}:
+        bell=b,
+        conical=c,
+        convex=x,
+        flat=f,
+        knobbed=k,
+        sunken=s
+    \item \textbf{cap-surface}:
+        fibrous=f,
+        grooves=g,
+        scaly=y,
+        smooth=s
+    \item \textbf{cap-color}:
+        brown=n,
+        buff=b,
+        cinnamon=c,
+        gray=g,
+        green=r,
+        pink=p,
+        purple=u,
+        red=e,
+        white=w,
+        yellow=y
+    \item \textbf{bruises}:
+        bruises=t,
+        no=f
+    \item \textbf{odor}:
+        almond=a,
+        anise=l,
+        creosote=c,
+        fishy=y,
+        foul=f,
+        musty=m,
+        none=n,
+        pungent=p,
+        spicy=s
+    \item \textbf{gill-attachment}:
+        attached=a,
+        descending=d,
+        free=f,
+        notched=n
+    \item \textbf{gill-spacing}:
+        close=c,
+        crowded=w,
+        distant=d
+    \item \textbf{gill-size}:
+        broad=b,
+        narrow=n
+    \item \textbf{gill-color}:
+        black=k,
+        brown=n,
+        buff=b,
+        chocolate=h,
+        gray=g,
+        green=r,
+        orange=o,
+        pink=p,
+        purple=u,
+        red=e,
+        white=w,
+        yellow=y
+    \item \textbf{stalk-shape}:
+        enlarging=e,
+        tapering=t
+    \item \textbf{stalk-root}:
+        bulbous=b,
+        club=c,
+        cup=u,
+        equal=e,
+        rhizomorphs=z,
+        rooted=r,
+        missing=?
+    \item \textbf{stalk-surface-above-ring}:
+        fibrous=f,
+        scaly=y,
+        silky=k,
+        smooth=s
+    \item \textbf{stalk-surface-below-ring}:
+        fibrous=f,
+        scaly=y,
+        silky=k,
+        smooth=s
+    \item \textbf{stalk-color-above-ring}:
+        brown=n,
+        buff=b,
+        cinnamon=c,
+        gray=g,
+        orange=o,
+        pink=p,
+        red=e,
+        white=w,
+        yellow=y
+    \item \textbf{stalk-color-below-ring}:
+        brown=n,
+        buff=b,
+        cinnamon=c,
+        gray=g,
+        orange=o,
+        pink=p,
+        red=e,
+        white=w,
+        yellow=y
+    \item \textbf{veil-type}:
+        partial=p,
+        universal=u
+    \item \textbf{veil-color}:
+        brown=n,
+        orange=o,
+        white=w,
+        yellow=y
+    \item \textbf{ring-number}:
+        none=n,
+        one=o,
+        two=t
+    \item \textbf{ring-type}:
+        cobwebby=c,
+        evanescent=e,
+        flaring=f,
+        large=l,
+        none=n,
+        pendant=p,
+        sheathing=s,
+        zone=z
+    \item \textbf{spore-print-color}:
+        black=k,
+        brown=n,
+        buff=b,
+        chocolate=h,
+        green=r,
+        orange=o,
+        purple=u,
+        white=w,
+        yellow=y
+    \item \textbf{population}:
+        abundant=a,
+        clustered=c,
+        numerous=n,
+        scattered=s,
+        several=v,
+        solitary=y
+    \item \textbf{habitat}:
+        grasses=g,
+        leaves=l,
+        meadows=m,
+        paths=p,
+        urban=u,
+        waste=w,
+        woods=d
+\end{enumerate}
+
+\somespace
+\noindent \textbf{4. URL where the above dataset(s) is(are) available.}
+\somespace
+
+https://www.kaggle.com/uciml/mushroom-classification
+
+\somespace
+\noindent \textbf{5. Which machine learning algorithm(s) is(are) going to be used?}
+\somespace
+
+WRITE YOUR ANSWER HERE.
+
+\somespace
+\noindent \textbf{6. Cross-validation technique (e.g., training/validation/testing, k-fold cross-validation, bootstrapping)}
+\somespace
+
+WRITE YOUR ANSWER HERE.
+
+\somespace
+\noindent \textbf{7. Which hyperparameter(s) is(are) going to be tuned.}
+\somespace
+
+WRITE YOUR ANSWER HERE.
+
+\somespace
+\noindent \textbf{8. Description of the experimental results, e.g., plots of number of samples versus accuracy (you can use different subsets of the same dataset), regularization parameter versus accuracy, ROC curves, plots of different datasets, etc.}
+\somespace
+
+ROC Curves, Sensitivity vs. Specificity, Precision vs. Recall, Training Dataset Size vs. Accuracy, etc.
+Plots of correlations between features, and correlations between features and class, 
+
+\somespace
+\noindent \textbf{9. Which programming language are you going to use?}
+\somespace
+
+Python-2.7
+
+\somespace
+
+\end{document}
