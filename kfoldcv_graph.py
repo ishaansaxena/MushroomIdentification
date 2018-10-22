@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 
+import time
 import numpy as np
 import pandas as pd
 
@@ -21,15 +22,19 @@ if __name__ == '__main__':
     from sklearn.svm import SVC
 
     models = []
-    models.append(("LR", LogisticRegression))
-    models.append(("CART", DecisionTreeClassifier))
-    models.append(("SVM", SVC))
+    models.append(("SVM-sigmoid", SVC, {'kernel'='sigmoid'}))
+    models.append(("SVM-linear", SVC, {'kernel'='linear'}))
+    models.append(("SVM-poly", SVC, {'kernel':'poly'}))
+    models.append(("SVM-rbf", SVC, {'kernel':'rbf'}))
 
     # For each algorithm
-    for name, model in models:
+    for name, model, kwargs in models:
 
-        # Folds [2, 4, 6, 8, 10, 15, 20, 25, 50, 75, 100]
-        xrange = range(2, 10, 2) + range(10, 25, 5) + range(25, 125, 25)
+        print "Model: %s | Time: " % (name),
+        start = time.time()
+
+        # Folds
+        xrange = [2, 5]
 
         # Mean accuracy and std dev
         m = []
@@ -37,7 +42,7 @@ if __name__ == '__main__':
 
         # For each fold size
         for i in xrange:
-            Z = kfoldcv.run(X, y, model, i)
+            Z = kfoldcv.run(X, y, model, i, **kwargs)
             m.append(np.mean(Z))
             s.append(np.std(Z))
 
@@ -50,3 +55,5 @@ if __name__ == '__main__':
         lines = df.plot.line()
         filename = project.results + name + "_accuracy_vs_folds.png"
         plt.savefig(filename, bbox_inches='tight')
+
+        print "%.3fs" % (time.time() - start)

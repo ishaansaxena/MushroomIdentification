@@ -2,7 +2,7 @@ from sklearn.metrics import accuracy_score
 
 import numpy as np
 
-def run(X, y, model, k, verbose=False):
+def run(X, y, model, k, verbose=False, *args, **kwargs):
     # Get n (samples) and d (dimensions)
     (n, d) = X.shape
 
@@ -25,7 +25,7 @@ def run(X, y, model, k, verbose=False):
         y_train = y[S]
 
         # Fit model
-        m = model()
+        m = model(**kwargs)
         m.fit(X_train, y_train)
 
         # Check prediction accuracy
