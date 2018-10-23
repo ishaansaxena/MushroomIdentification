@@ -1,0 +1,18 @@
+Model:	SVM-linear
+	2-fold: (mu=0.616, sigma=0.028)
+	5-fold: (mu=0.854, sigma=0.137)
+	10-fold: (mu=0.922, sigma=0.093)
+	20-fold: (mu=0.952, sigma=0.058)
+	Time: 60.827s
+Model:	SVM-poly
+	2-fold: (mu=0.705, sigma=0.115)
+	5-fold: (mu=0.991, sigma=0.010)
+	10-fold: (mu=1.000, sigma=0.000)
+	20-fold: (mu=1.000, sigma=0.000)
+	Time: 8.111s
+Model:	SVM-rbf
+	2-fold: (mu=0.738, sigma=0.133)
+	5-fold: (mu=0.947, sigma=0.065)
+	10-fold: (mu=0.998, sigma=0.004)
+	20-fold: (mu=1.000, sigma=0.000)
+	Time: 12.957s
