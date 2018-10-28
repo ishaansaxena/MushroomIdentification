@@ -19,7 +19,6 @@ def run(F, X, y):
     # Initialize S as an empty set
     S = []
     thetaS = []
-
     # For f in [0, F - 1]:
     for f in range(F):
         # Get all the z values

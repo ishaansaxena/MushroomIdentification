@@ -11,7 +11,7 @@ def run(F):
 	X = c_X.values
 
 	#ForwardFitting
-	t1, t1_S = ff.run(F,X,c_Y)
+	# t1, t1_S = ff.run(F,X,c_Y)
 	
 	#Greedy Subset
 	t2, t2_S = gr.run(F,X,c_Y)
@@ -28,12 +28,12 @@ def run(F):
 	plt.show()
 
 	#Plot Forward Fitting
-	plt.figure()
-	plt.bar(range(t1_S.size), t1_S)
-	plt.xlabel('Feature')
-	plt.ylabel('Weight')
-	plt.title('Forward Fitting')
-	plt.show()
+	# plt.figure()
+	# plt.bar(range(t1_S.size), t1_S)
+	# plt.xlabel('Feature')
+	# plt.ylabel('Weight')
+	# plt.title('Forward Fitting')
+	# plt.show()
 
 	#Plot Myopic Subset
 	plt.figure()
