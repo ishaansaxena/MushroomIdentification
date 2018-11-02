@@ -10,7 +10,7 @@ def run(X, y, model, k, verbose=False, *args, **kwargs):
     Z = np.zeros((k, 1))
 
     if verbose:
-        print "%d-Fold CV\tModel: %s" % (k, model)
+        print ("%d-Fold CV\tModel: %s" % (k, model))
 
     # For each fold
     for i in range(k):
@@ -18,7 +18,7 @@ def run(X, y, model, k, verbose=False, *args, **kwargs):
         lower = np.floor(float(n) * i / k).astype('int64')
         upper = np.floor(float(n) * (i + 1) / k - 1).astype('int64')
         T = range(lower, upper + 1)
-        S = range(0, lower) + range(upper + 1, n)
+        S = list(range(0, lower)) + list(range(upper + 1, n))
 
         # Get training data
         X_train = X[S, :]
@@ -35,7 +35,7 @@ def run(X, y, model, k, verbose=False, *args, **kwargs):
         Z[i] = accuracy_score(y[T], y_pred)
 
         if verbose:
-            print "\t\tIteration (%d/%d)\tAccuracy Score: %f" % (i + 1, k, Z[i])
+            print ("\t\tIteration (%d/%d)\tAccuracy Score: %f" % (i + 1, k, Z[i]))
 
     # Return k-Fold results
     return Z
