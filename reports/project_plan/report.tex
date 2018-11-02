@@ -37,163 +37,180 @@
 \somespace
 
 Analysis of Mushroom Species Data by classification into groups of poisonous and edible
-based on features such as caps, odor, stalks, etc.
+based on features such as caps, odor, stalks, etc. and comparing different classification
+models and algorithms to determine which is best suited to this problem.
 
 \somespace
 \noindent \textbf{3. Description of the dataset (or datasets) to be used.}
 \somespace
 
-Attribute Information: (classes: edible=e, poisonous=p)
+Size of dataset (before encoding): $ (n=8124, d=22) $\\
 
+Size of dataset (after encoding): $ (n=8124, d=107) $\\
+
+Classes: edible=e, poisonous=p (y-values)\\
+
+Attribute Information and Encoding:
 \begin{enumerate}
-    \item \textbf{cap-shape}:
-        bell=b,
-        conical=c,
-        convex=x,
-        flat=f,
-        knobbed=k,
-        sunken=s
-    \item \textbf{cap-surface}:
-        fibrous=f,
-        grooves=g,
-        scaly=y,
-        smooth=s
-    \item \textbf{cap-color}:
-        brown=n,
-        buff=b,
-        cinnamon=c,
-        gray=g,
-        green=r,
-        pink=p,
-        purple=u,
-        red=e,
-        white=w,
-        yellow=y
-    \item \textbf{bruises}:
-        bruises=t,
-        no=f
-    \item \textbf{odor}:
-        almond=a,
-        anise=l,
-        creosote=c,
-        fishy=y,
-        foul=f,
-        musty=m,
-        none=n,
-        pungent=p,
-        spicy=s
-    \item \textbf{gill-attachment}:
-        attached=a,
-        descending=d,
-        free=f,
-        notched=n
-    \item \textbf{gill-spacing}:
-        close=c,
-        crowded=w,
-        distant=d
-    \item \textbf{gill-size}:
-        broad=b,
-        narrow=n
-    \item \textbf{gill-color}:
-        black=k,
-        brown=n,
-        buff=b,
-        chocolate=h,
-        gray=g,
-        green=r,
-        orange=o,
-        pink=p,
-        purple=u,
-        red=e,
-        white=w,
-        yellow=y
-    \item \textbf{stalk-shape}:
-        enlarging=e,
-        tapering=t
-    \item \textbf{stalk-root}:
-        bulbous=b,
-        club=c,
-        cup=u,
-        equal=e,
-        rhizomorphs=z,
-        rooted=r,
-        missing=?
-    \item \textbf{stalk-surface-above-ring}:
-        fibrous=f,
-        scaly=y,
-        silky=k,
-        smooth=s
-    \item \textbf{stalk-surface-below-ring}:
-        fibrous=f,
-        scaly=y,
-        silky=k,
-        smooth=s
-    \item \textbf{stalk-color-above-ring}:
-        brown=n,
-        buff=b,
-        cinnamon=c,
-        gray=g,
-        orange=o,
-        pink=p,
-        red=e,
-        white=w,
-        yellow=y
-    \item \textbf{stalk-color-below-ring}:
-        brown=n,
-        buff=b,
-        cinnamon=c,
-        gray=g,
-        orange=o,
-        pink=p,
-        red=e,
-        white=w,
-        yellow=y
-    \item \textbf{veil-type}:
-        partial=p,
-        universal=u
-    \item \textbf{veil-color}:
-        brown=n,
-        orange=o,
-        white=w,
-        yellow=y
-    \item \textbf{ring-number}:
-        none=n,
-        one=o,
-        two=t
-    \item \textbf{ring-type}:
-        cobwebby=c,
-        evanescent=e,
-        flaring=f,
-        large=l,
-        none=n,
-        pendant=p,
-        sheathing=s,
-        zone=z
-    \item \textbf{spore-print-color}:
-        black=k,
-        brown=n,
-        buff=b,
-        chocolate=h,
-        green=r,
-        orange=o,
-        purple=u,
-        white=w,
-        yellow=y
-    \item \textbf{population}:
-        abundant=a,
-        clustered=c,
-        numerous=n,
-        scattered=s,
-        several=v,
-        solitary=y
-    \item \textbf{habitat}:
-        grasses=g,
-        leaves=l,
-        meadows=m,
-        paths=p,
-        urban=u,
-        waste=w,
-        woods=d
+    \item \underline{Nominal Categorical Variables:}\\
+    These variables will be encoded as binary one-hot features. As a result, each feature
+    in this category would be replace by the $ k $ features in the encoded dataset if the
+    feature has $ k $ possible values. These featues include:
+    \begin{enumerate}[label=\roman*.]
+        \item \textbf{cap-shape}:
+            bell=b,
+            conical=c,
+            convex=x,
+            flat=f,
+            knobbed=k,
+            sunken=s
+        \item \textbf{cap-surface}:
+            fibrous=f,
+            grooves=g,
+            scaly=y,
+            smooth=s
+        \item \textbf{cap-color}:
+            brown=n,
+            buff=b,
+            cinnamon=c,
+            gray=g,
+            green=r,
+            pink=p,
+            purple=u,
+            red=e,
+            white=w,
+            yellow=y
+        \item \textbf{bruises}:
+            bruises=t,
+            no=f
+        \item \textbf{odor}:
+            almond=a,
+            anise=l,
+            creosote=c,
+            fishy=y,
+            foul=f,
+            musty=m,
+            none=n,
+            pungent=p,
+            spicy=s
+        \item \textbf{gill-attachment}:
+            attached=a,
+            descending=d,
+            free=f,
+            notched=n
+        \item \textbf{gill-color}:
+            black=k,
+            brown=n,
+            buff=b,
+            chocolate=h,
+            gray=g,
+            green=r,
+            orange=o,
+            pink=p,
+            purple=u,
+            red=e,
+            white=w,
+            yellow=y
+        \item \textbf{stalk-root}:
+            bulbous=b,
+            club=c,
+            cup=u,
+            equal=e,
+            rhizomorphs=z,
+            rooted=r,
+            missing=?
+        \item \textbf{stalk-surface-above-ring}:
+            fibrous=f,
+            scaly=y,
+            silky=k,
+            smooth=s
+        \item \textbf{stalk-surface-below-ring}:
+            fibrous=f,
+            scaly=y,
+            silky=k,
+            smooth=s
+        \item \textbf{stalk-color-above-ring}:
+            brown=n,
+            buff=b,
+            cinnamon=c,
+            gray=g,
+            orange=o,
+            pink=p,
+            red=e,
+            white=w,
+            yellow=y
+        \item \textbf{stalk-color-below-ring}:
+            brown=n,
+            buff=b,
+            cinnamon=c,
+            gray=g,
+            orange=o,
+            pink=p,
+            red=e,
+            white=w,
+            yellow=y
+        \item \textbf{veil-type}:
+            partial=p,
+            universal=u
+        \item \textbf{veil-color}:
+            brown=n,
+            orange=o,
+            white=w,
+            yellow=y
+        \item \textbf{ring-type}:
+            cobwebby=c,
+            evanescent=e,
+            flaring=f,
+            large=l,
+            none=n,
+            pendant=p,
+            sheathing=s,
+            zone=z
+        \item \textbf{spore-print-color}:
+            black=k,
+            brown=n,
+            buff=b,
+            chocolate=h,
+            green=r,
+            orange=o,
+            purple=u,
+            white=w,
+            yellow=y
+        \item \textbf{habitat}:
+            grasses=g,
+            leaves=l,
+            meadows=m,
+            paths=p,
+            urban=u,
+            waste=w,
+            woods=d
+    \end{enumerate}
+    \item \underline{Ordinal Categorical Variables:}\\
+    These variables will be encoded in place by encoding labels, as the data here has
+    ordinal meaning to it. These variables include:
+    \begin{enumerate}[label=\roman*.]
+        \item \textbf{gill-spacing}:
+            close=c$\to$0,
+            crowded=w$\to$1,
+            distant=d$\to$2
+        \item \textbf{gill-size}:
+            broad=b$\to$0,
+            narrow=n$\to$1
+        \item \textbf{stalk-shape}:
+            enlarging=e$\to$0,
+            tapering=t$\to$1
+        \item \textbf{ring-number}:
+            none=n$\to$0,
+            one=o$\to$1,
+            two=t$\to$2
+        \item \textbf{population}:
+            abundant=a$\to$0,
+            clustered=c$\to$1,
+            numerous=n$\to$2,
+            scattered=s$\to$3,
+            several=v$\to$4,
+            solitary=y$\to$5
+    \end{enumerate}
 \end{enumerate}
 
 \somespace
@@ -206,26 +223,38 @@ https://www.kaggle.com/uciml/mushroom-classification
 \noindent \textbf{5. Which machine learning algorithm(s) is(are) going to be used?}
 \somespace
 
-WRITE YOUR ANSWER HERE.
+We are looking to compare the performance of different algorithms, including
+Support Vector Machines, Adaboost, and Logistic Regression using different metrics. We
+will also use feature selection to ensure additional complexity control and gain
+interpretability.
 
 \somespace
 \noindent \textbf{6. Cross-validation technique (e.g., training/validation/testing, k-fold cross-validation, bootstrapping)}
 \somespace
 
-WRITE YOUR ANSWER HERE.
+k-Fold Cross Validation would be used with about 5 to 10 folds.
 
 \somespace
 \noindent \textbf{7. Which hyperparameter(s) is(are) going to be tuned.}
 \somespace
 
-WRITE YOUR ANSWER HERE.
+Hyperparameters of the chosen algorithm would be tuned after it is determined. For instance,
+if a Support Vector Machine is chosen, the value of the penalty parameter $ C $ for the
+error terms (slack variables) will be adjusted.
 
 \somespace
 \noindent \textbf{8. Description of the experimental results, e.g., plots of number of samples versus accuracy (you can use different subsets of the same dataset), regularization parameter versus accuracy, ROC curves, plots of different datasets, etc.}
 \somespace
 
-ROC Curves, Sensitivity vs. Specificity, Precision vs. Recall, Training Dataset Size vs. Accuracy, etc.
-Plots of correlations between features, and correlations between features and class, 
+Graphs for Hyperparameter tuning would include hyperparameter value vs accuracy, plots of
+descion boundary and margins obtained by different hyperparameter values.
+
+We will add plots for correlations between features, and correlations between features and
+class labels, etc. for feature selection.
+
+To compare models (and different kernels), we will use the sensitivity vs. specificity
+curves, area under ROC curve, number of folds used vs. training accuracy for each model,
+number of features (size of feature subset) vs accuracy.
 
 \somespace
 \noindent \textbf{9. Which programming language are you going to use?}
