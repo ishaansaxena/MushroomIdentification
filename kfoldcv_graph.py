@@ -27,7 +27,7 @@ if __name__ == '__main__':
     # For each algorithm
     for name, model, kwargs in models:
 
-        print "Model:\t%s" % (name)
+        print ("Model:\t%s" % (name))
         start = time.time()
 
         # Folds
@@ -42,7 +42,7 @@ if __name__ == '__main__':
             Z = kfoldcv.run(X, y, model, i, **kwargs)
             m.append(np.mean(Z))
             s.append(np.std(Z))
-            print "\t%d-fold: (mu=%.3f, sigma=%.3f)" % (i, np.mean(Z), np.std(Z))
+            print ("\t%d-fold: (mu=%.3f, sigma=%.3f)" % (i, np.mean(Z), np.std(Z)))
 
         # Plot accuracy vs. fold size
         df = pd.DataFrame({
@@ -54,4 +54,4 @@ if __name__ == '__main__':
         filename = project.results + name + "_accuracy_vs_folds.png"
         plt.savefig(filename, bbox_inches='tight')
 
-        print "\tTime: %.3fs" % (time.time() - start)
+        print ("\tTime: %.3fs" % (time.time() - start))

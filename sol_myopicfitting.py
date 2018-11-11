@@ -38,8 +38,9 @@ def run(F,X,y):
             # get X_ = x_{t,j}
             X_j_temp = X[:,j]
             X_j = X_j_temp.reshape(len(X_j_temp),1)
-            
-            effect = (-1) * np.asscalar(np.dot(z.T,X_j))
+            print(len(z))
+            print(len(X_j))
+            effect = (-1) * np.dot(z.T,X_j)
             effect = abs(effect)
             if (effect > max_effect):
                 max_effect = effect

@@ -3,7 +3,7 @@
 ## project.py
 1. `config`: Dictionary for all global configs.
     - `filename`: Location of dataset for this project.
-    - `label`: String label for class column.
+    - `label`: String label for class column. Poisonous = 1, Edible = 0.
 2. `results`: Location where results are stored, such as graphs, hypothesis test results, etc.
 
 ## data.py
