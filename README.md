@@ -7,9 +7,7 @@
 2. `results`: Location where results are stored, such as graphs, hypothesis test results, etc.
 
 ## data.py
-`data.load(filename, label)`:
-- `filename`: String with the relative position of the database (.csv).
-- `label`: String label for the class columns.
+`data.load()`:
 - returns cleaned numerical data in form `(X, y)`
 
 ## kfoldcv.py

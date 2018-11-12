@@ -11,7 +11,7 @@ import kfoldcv
 if __name__ == '__main__':
 
     # Load (X, y) dataset
-    X, y = data.load(project.config['filename'], project.config['label'])
+    X, y = data.load()
 
     # Get X as a numpy matrix
     X = X.values
@@ -31,7 +31,7 @@ if __name__ == '__main__':
         start = time.time()
 
         # Folds
-        xrange = [2, 5, 10, 20]
+        xrange = [2, 5, 10]
 
         # Mean accuracy and std dev
         m = []

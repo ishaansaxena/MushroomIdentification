@@ -1,21 +1,33 @@
 import numpy as np
 import pandas as pd
 
-def load(filename, label):
-    # Read CSV File
-    df = pd.read_csv(filename)
+import project
 
-    # Remove N/A Values
-    df = df.dropna()
+def load():
+    df = pd.read_csv(project.config['filename'])
 
-    # Change categorical columns to numeric values
-    for column in df:
-        df[column] = df[column].astype('category')
+    # Encode Ordinal Variables
+    ordinal_columns = ['gill-spacing', 'gill-size', 'stalk-shape', 'ring-number', 'population', 'class']
+    columns = ordinal_columns[:]
+
+    for column in columns:
+            df[column] = df[column].astype('category')
 
     columns = df.select_dtypes(['category']).columns
     df[columns] = df[columns].apply(lambda x: x.cat.codes)
 
-    # Separate X, y from df
+    # Encoding Nominal Variables
+    columns = ordinal_columns[:]
+
+    for column in df:
+        if column not in columns:
+            dummies = pd.get_dummies(df.pop(column))
+            column_names = [column + "_" + x for x in dummies.columns]
+            dummies.columns = column_names
+            df = df.join(dummies)
+
+    # Separate Data into X, y
+    label = 'class'
     X = df.loc[:, df.columns != label]
     y = df[label].ravel()
 
