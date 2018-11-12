@@ -28,9 +28,9 @@ if __name__ == '__main__':
     models.append(("Perceptron-alpha 0.0001", Perceptron, {'alpha':0.0001}))
     models.append(("Perceptron-alpha 1", Perceptron, {'alpha':1}))
     models.append(("Perceptron-alpha 100", Perceptron, {'alpha':100}))
-    models.append(("Perceptron-pentalty l2", Perceptron, {'pentalty':'l2'}))
-    models.append(("Perceptron-pentalty l1", Perceptron, {'pentalty':'l1'}))
-    models.append(("Perceptron-pentalty elasticnet", Perceptron, {'pentalty':'elasticnet'}))
+    models.append(("Perceptron-pentalty l2", Perceptron, {'penalty':'l2'}))
+    models.append(("Perceptron-pentalty l1", Perceptron, {'penalty':'l1'}))
+    models.append(("Perceptron-pentalty elasticnet", Perceptron, {'penalty':'elasticnet'}))
 
     models.append(("Adaboost-n_estimators 50", AdaBoostClassifier, {'n_estimators':50}))
     models.append(("Adaboost-n_estimators 100", AdaBoostClassifier, {'n_estimators':100}))
@@ -43,7 +43,7 @@ if __name__ == '__main__':
     models.append(("SVM-poly", SVC, {'kernel':'poly'}))
     models.append(("SVM-rbf", SVC, {'kernel':'rbf'}))
 
-    models.append("LR", LogisticRegression, {})
+    models.append(("LR", LogisticRegression, {}))
 
     models.append(("XGB", XGBClassifier, {}))
 
