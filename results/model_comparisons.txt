@@ -1,0 +1,85 @@
+Model:	Perceptron-alpha 0.0001
+	2-fold: (mu=0.853, sigma=0.054)
+	5-fold: (mu=0.994, sigma=0.008)
+	10-fold: (mu=1.000, sigma=0.001)
+	Time: 2.327s
+Model:	Perceptron-alpha 1
+	2-fold: (mu=0.853, sigma=0.054)
+	5-fold: (mu=0.994, sigma=0.008)
+	10-fold: (mu=1.000, sigma=0.001)
+	Time: 2.465s
+Model:	Perceptron-alpha 100
+	2-fold: (mu=0.853, sigma=0.054)
+	5-fold: (mu=0.994, sigma=0.008)
+	10-fold: (mu=1.000, sigma=0.001)
+	Time: 2.270s
+Model:	Perceptron-pentalty l2
+	2-fold: (mu=0.846, sigma=0.045)
+	5-fold: (mu=0.972, sigma=0.016)
+	10-fold: (mu=0.992, sigma=0.015)
+	Time: 2.459s
+Model:	Perceptron-pentalty l1
+	2-fold: (mu=0.882, sigma=0.079)
+	5-fold: (mu=0.987, sigma=0.022)
+	10-fold: (mu=0.997, sigma=0.008)
+	Time: 4.514s
+Model:	Perceptron-pentalty elasticnet
+	2-fold: (mu=0.846, sigma=0.045)
+	5-fold: (mu=0.972, sigma=0.016)
+	10-fold: (mu=0.992, sigma=0.015)
+	Time: 5.564s
+Model:	Adaboost-n_estimators 10
+	2-fold: (mu=0.796, sigma=0.007)
+	5-fold: (mu=0.959, sigma=0.031)
+	10-fold: (mu=0.975, sigma=0.035)
+	Time: 1.489s
+Model:	Adaboost-n_estimators 50
+	2-fold: (mu=0.849, sigma=0.046)
+	5-fold: (mu=1.000, sigma=0.000)
+	10-fold: (mu=1.000, sigma=0.000)
+	Time: 7.199s
+Model:	Adaboost-n_estimators 100
+	2-fold: (mu=0.841, sigma=0.038)
+	5-fold: (mu=1.000, sigma=0.000)
+	10-fold: (mu=1.000, sigma=0.000)
+	Time: 12.988s
+Model:	Adaboost-learning_rate 1
+	2-fold: (mu=0.802, sigma=0.001)
+	5-fold: (mu=1.000, sigma=0.000)
+	10-fold: (mu=1.000, sigma=0.000)
+	Time: 6.776s
+Model:	Adaboost-learning_rate 0.5
+	2-fold: (mu=0.887, sigma=0.084)
+	5-fold: (mu=1.000, sigma=0.000)
+	10-fold: (mu=1.000, sigma=0.001)
+	Time: 6.849s
+Model:	Adaboost-algorithm SAMME
+	2-fold: (mu=0.887, sigma=0.084)
+	5-fold: (mu=0.986, sigma=0.018)
+	10-fold: (mu=0.997, sigma=0.006)
+	Time: 5.869s
+Model:	Adaboost-algorithm SAMME.R
+	2-fold: (mu=0.796, sigma=0.007)
+	5-fold: (mu=1.000, sigma=0.000)
+	10-fold: (mu=1.000, sigma=0.000)
+	Time: 6.491s
+Model:	SVM-linear
+	2-fold: (mu=0.884, sigma=0.087)
+	5-fold: (mu=1.000, sigma=0.000)
+	10-fold: (mu=1.000, sigma=0.000)
+	Time: 4.987s
+Model:	SVM-poly
+	2-fold: (mu=0.707, sigma=0.184)
+	5-fold: (mu=0.913, sigma=0.073)
+	10-fold: (mu=0.953, sigma=0.043)
+	Time: 33.005s
+Model:	SVM-rbf
+	2-fold: (mu=0.741, sigma=0.059)
+	5-fold: (mu=0.973, sigma=0.024)
+	10-fold: (mu=0.996, sigma=0.010)
+	Time: 13.065s
+Model:	LR
+	2-fold: (mu=0.832, sigma=0.029)
+	5-fold: (mu=0.986, sigma=0.014)
+	10-fold: (mu=0.999, sigma=0.002)
+	Time: 0.770s
