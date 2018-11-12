@@ -1,4 +1,4 @@
-from sklearn.metrics import accuracy_score
+from sklearn import metrics as metrics
 
 import numpy as np
 
@@ -32,7 +32,7 @@ def run(X, y, model, k, verbose=False, *args, **kwargs):
         y_pred = m.predict(X[T])
 
         # Update Z values based on accuracy score
-        Z[i] = accuracy_score(y[T], y_pred)
+        Z[i] = metrics.accuracy_score(y[T], y_pred)
 
         if verbose:
             print ("\t\tIteration (%d/%d)\tAccuracy Score: %f" % (i + 1, k, Z[i]))
