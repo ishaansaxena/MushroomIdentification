@@ -17,12 +17,35 @@ if __name__ == '__main__':
     X = X.values
 
     # Import models
+    from xgboost import XGBClassifier
     from sklearn.svm import SVC
+    from sklearn.linear_model import Perceptron
+    from sklearn.ensemble import AdaBoostClassifier
+    from sklearn.linear_model import LogisticRegression
 
     models = []
+
+    models.append(("Perceptron-alpha 0.0001", Perceptron, {'alpha':0.0001}))
+    models.append(("Perceptron-alpha 1", Perceptron, {'alpha':1}))
+    models.append(("Perceptron-alpha 100", Perceptron, {'alpha':100}))
+    models.append(("Perceptron-pentalty l2", Perceptron, {'pentalty':'l2'}))
+    models.append(("Perceptron-pentalty l1", Perceptron, {'pentalty':'l1'}))
+    models.append(("Perceptron-pentalty elasticnet", Perceptron, {'pentalty':'elasticnet'}))
+
+    models.append(("Adaboost-n_estimators 50", AdaBoostClassifier, {'n_estimators':50}))
+    models.append(("Adaboost-n_estimators 100", AdaBoostClassifier, {'n_estimators':100}))
+    models.append(("Adaboost-learning_rate 1", AdaBoostClassifier, {'learning_rate':1}))
+    models.append(("Adaboost-learning_rate 10", AdaBoostClassifier, {'learning_rate':10}))
+    models.append(("Adaboost-algorithm SAMME", AdaBoostClassifier, {'algorithm':'SAMME'}))
+    models.append(("Adaboost-algorithm SAMME.R", AdaBoostClassifier, {'algorithm':'SAMME.R'}))
+
     models.append(("SVM-linear", SVC, {'kernel':'linear'}))
     models.append(("SVM-poly", SVC, {'kernel':'poly'}))
     models.append(("SVM-rbf", SVC, {'kernel':'rbf'}))
+
+    models.append("LR", LogisticRegression, {})
+
+    models.append(("XGB", XGBClassifier, {}))
 
     # For each algorithm
     for name, model, kwargs in models:
