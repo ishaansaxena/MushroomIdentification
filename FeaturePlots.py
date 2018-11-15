@@ -12,15 +12,17 @@ def FeatPlots():
 	cols = df.select_dtypes(include=['object']).columns
 
 	# Get Plots for Feature Frequencies
+		
 	for c in cols:
-		# sns.countplot(x = c, data = df)
-		# plt.title('Feature Frequencies')
-		# plt.show()
-
 		labs = df[c].value_counts().axes[0].tolist()
 		ind = np.arange(len(labs))
 		s = []
 		t = []
+		
+		sns.countplot(x = c, data = df)
+		plt.title('Feature Frequencies')
+		plt.show()
+
 		for l in labs:
 			numpois = 0
 			tot = len(df[df[c] == l].index)
@@ -32,6 +34,7 @@ def FeatPlots():
 
 		width = 0.40
 		fig, ax = plt.subplots(figsize=(12,7))
+	
 		edible_bars = ax.bar(ind, t , width, color='g')
 		poison_bars = ax.bar(ind+width, s , width, color='r')
 
@@ -41,6 +44,5 @@ def FeatPlots():
 		ax.legend((edible_bars,poison_bars),('edible','poisonous'),fontsize=17)
 		plt.title('Edible v/s Poisonous for %s' %c)
 		plt.show()
-
-
+		
 FeatPlots()
