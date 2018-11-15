@@ -20,5 +20,5 @@ def run(F):
     plt.show()
 
     return t2, t2_S
-    
+
 run(50)

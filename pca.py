@@ -12,7 +12,7 @@ if __name__ == "__main__":
    X = X.values;
    pca = PCA(n_components = 2);
    X_reduced = pca.fit_transform(X);
-   
+
    poisonous = list(np.where(y==1)[0]);
    edible = list(np.where(y==0)[0]);
 

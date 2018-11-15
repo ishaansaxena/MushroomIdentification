@@ -10,8 +10,8 @@ import numpy.linalg as la
 # theta = linreg.run(X,y)
 
 def run(X,y):
-	#print la.inv(X.T.dot(X)).dot(X.T).dot(y)
-	return np.dot(la.pinv(X),y)
+    #print la.inv(X.T.dot(X)).dot(X.T).dot(y)
+    return np.dot(la.pinv(X),y)
 
 # X, y = createlinregdata.run(10,3)
 
