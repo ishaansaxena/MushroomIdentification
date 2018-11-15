@@ -1,5 +1,5 @@
 import pandas as pd
-import seaborn as sns
+# import seaborn as sns
 import matplotlib.pyplot as plt
 import project
 import numpy as np
@@ -12,16 +12,12 @@ def FeatPlots():
     cols = df.select_dtypes(include=['object']).columns
 
     # Get Plots for Feature Frequencies
-        
+
     for c in cols:
         labs = df[c].value_counts().axes[0].tolist()
         ind = np.arange(len(labs))
         s = []
         t = []
-
-        sns.countplot(x = c, data = df)
-        plt.title('Feature Frequencies')
-        plt.show()
 
         for l in labs:
             numpois = 0
@@ -43,6 +39,7 @@ def FeatPlots():
         ax.set_xticklabels(labs, fontsize = 12)
         ax.legend((edible_bars,poison_bars),('edible','poisonous'),fontsize=17)
         plt.title('Edible v/s Poisonous for %s' %c)
-        plt.show()
+        filename = project.results + "feature_plot_" + c
+        plt.savefig(filename, bbox_inches='tight')
 
 FeatPlots()
