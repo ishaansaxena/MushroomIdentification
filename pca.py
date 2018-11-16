@@ -26,13 +26,13 @@ if __name__ == "__main__":
    pp.show() # This command will open the figure, and wait
 
    #3d figure (not really helpful)
-   fig = pp.figure();
-   ax = fig.add_subplot(111, projection='3d')
-   ax.scatter(X_reduced[poisonous,0], X_reduced[poisonous,1],y[poisonous],'bo');
-   ax.scatter(X_reduced[edible,0], X_reduced[edible,1],y[edible], 'ro');
+   #fig = pp.figure();
+   #ax = fig.add_subplot(111, projection='3d')
+   #ax.scatter(X_reduced[poisonous,0], X_reduced[poisonous,1],y[poisonous],'bo');
+   #ax.scatter(X_reduced[edible,0], X_reduced[edible,1],y[edible], 'ro');
 
-   ax.set_xlabel('PCA feature 0');
-   ax.set_ylabel('PCA feature 1');
-   ax.set_zlabel('Class');
+   #ax.set_xlabel('PCA feature 0');
+   #ax.set_ylabel('PCA feature 1');
+   #ax.set_zlabel('Class');
 
    pp.show();
