@@ -3,7 +3,7 @@ import pandas as pd
 
 import project
 
-def load():
+def load(return_full_df=False):
     df = pd.read_csv(project.config['filename'])
 
     # Encode Ordinal Variables
@@ -25,6 +25,9 @@ def load():
             column_names = [column + "_" + x for x in dummies.columns]
             dummies.columns = column_names
             df = df.join(dummies)
+
+    if return_full_df:
+        return df
 
     # Separate Data into X, y
     label = 'class'
