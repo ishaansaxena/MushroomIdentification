@@ -1,0 +1,93 @@
+\documentclass[fleqn]{article}
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{multicol}
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\usetikzlibrary{arrows}
+\lstset{basicstyle=\ttfamily, mathescape}
+\graphicspath{{./img/}}
+
+\title{Preliminary Report - Edibility of Mushroom Species}
+\author{
+    \begin{tabular}{cccc}
+            Ishaan Saxena      & Nikita Rajaneesh    & Swaraj Bhaduri     & Utkarsh Jain       \\
+            isaxena@purdue.edu & nrajanee@purdue.edu & sbhadur@purdue.edu & jain192@purdue.edu
+    \end{tabular}
+}
+
+\begin{document}
+    \maketitle
+
+    % 1
+    \section{Introduction to the Problem}
+
+    % 1.1
+    \subsection{Definition of the Problem}
+
+    Given a dataset $ \mathcal{D} $ with $ n=8124 $ samples where each sample represents a
+    mushroom with features being the observations about the characterestics of the mushrooms
+    such as odor, color, etc., we aim to test and compare various supervised learning models
+    for the problem of classifying each sample into either poisonous or edible. Further,
+    we will optimize the Hyperparameters of the model which initially performs the best
+    on the dataset.\footnote{This dataset can be found at
+    \href{https://www.kaggle.com/uciml/mushroom-classification}
+    {https://www.kaggle.com/uciml/mushroom-classification}.}
+
+    % 1.2
+    \subsection{Data Description}
+
+    We are given $ \mathcal{D} $ with $ n=8124 $ samples wherein each sample has the
+    following 22 features (excluding the class label).
+
+    \begin{multicols}{3}
+        \begin{enumerate}
+            \item cap-shape
+            \item cap-surface
+            \item cap-color
+            \item bruises
+            \item odor
+            \item gill-attachment
+            \item gill-color
+            \item stalk-root
+            \item stalk-surface-above-ring
+            \item stalk-surface-below-ring
+            \item stalk-color-above-ring
+            \item stalk-color-below-ring
+            \item veil-type
+            \item veil-color
+            \item ring-type
+            \item spore-print-color
+            \item habitat
+            \item gill-spacing
+            \item gill-size
+            \item stalk-shape
+            \item ring-number
+            \item population
+        \end{enumerate}
+    \end{multicols}
+
+    These features have been further enumerated in Appendix A.
+
+    % 1.3
+    \subsection{Encoding the Data}
+
+    Note that all the features in our dataset are categorical variables. As a result, to
+    proceed with evaluation of model performance, we must first encode these variables
+    into numerical/binary values.
+
+    % Appendices
+    % Appendix
+    \newpage
+    \section*{\underline{Appendix A}}
+
+\end{document}
