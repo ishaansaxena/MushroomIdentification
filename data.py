@@ -3,9 +3,21 @@ import pandas as pd
 
 import project
 
-def load():
+def load(return_full_df=False):
     df = pd.read_csv(project.config['filename'])
+    df = encode(df)
 
+    if return_full_df:
+        return df
+
+    # Separate Data into X, y
+    label = 'class'
+    X = df.loc[:, df.columns != label]
+    y = df[label].ravel()
+
+    return X, y
+
+def encode(df):
     # Encode Ordinal Variables
     ordinal_columns = ['gill-spacing', 'gill-size', 'stalk-shape', 'ring-number', 'population', 'class']
     columns = ordinal_columns[:]
@@ -26,9 +38,4 @@ def load():
             dummies.columns = column_names
             df = df.join(dummies)
 
-    # Separate Data into X, y
-    label = 'class'
-    X = df.loc[:, df.columns != label]
-    y = df[label].ravel()
-
-    return X, y
+    return df

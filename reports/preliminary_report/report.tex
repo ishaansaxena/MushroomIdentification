@@ -1,0 +1,403 @@
+\documentclass[fleqn]{article}
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{multicol}
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\usetikzlibrary{arrows}
+\lstset{basicstyle=\ttfamily, mathescape}
+\graphicspath{{./img/}}
+
+\usepackage[utf8]{inputenc}
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+language=Python,
+basicstyle=\tt,
+otherkeywords={self},             % Add keywords here
+keywordstyle=\tt\color{deepblue},
+emph={MyClass,__init__},          % Custom highlighting
+emphstyle=\tt\color{deepred},    % Custom highlighting style
+stringstyle=\color{deepgreen},
+frame=tb,                         % Any extra options here
+showstringspaces=false            %
+}}
+
+
+% Python environment
+\lstnewenvironment{python}[1][]
+{
+\pythonstyle
+\lstset{#1}
+}
+{}
+
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+\pythonstyle
+\lstinputlisting[#1]{#2}}}
+
+% Python for inline
+\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+
+\title{Preliminary Report - Edibility of Mushroom Species}
+\author{
+    \begin{tabular}{cccc}
+            Ishaan Saxena      & Nikita Rajaneesh    & Swaraj Bhaduri     & Utkarsh Jain       \\
+            isaxena@purdue.edu & nrajanee@purdue.edu & sbhadur@purdue.edu & jain192@purdue.edu
+    \end{tabular}
+}
+
+% Document
+\begin{document}
+    \maketitle
+
+    % 1
+    \section{Introduction to the Problem}
+
+    % 1.1
+    \subsection{Definition of the Problem}
+
+    Given a dataset $ \mathcal{D} $ with $ n=8124 $ samples where each sample represents a
+    mushroom with features being the observations about the characterestics of the mushrooms
+    such as odor, color, etc., we aim to test and compare various supervised learning models
+    for the problem of classifying each sample into either poisonous or edible. Further,
+    we will optimize the Hyperparameters of the model which initially performs the best
+    on the dataset.\footnote{This dataset can be found at
+    \href{https://www.kaggle.com/uciml/mushroom-classification}
+    {https://www.kaggle.com/uciml/mushroom-classification}.}
+
+    % 1.2
+    \subsection{Data Description}
+
+    We are given $ \mathcal{D} $ with $ n=8124 $ samples wherein each sample has the
+    following 22 features (excluding the class label).
+
+    \begin{multicols}{3}
+        \begin{enumerate}
+            \item cap-shape
+            \item cap-surface
+            \item cap-color
+            \item bruises
+            \item odor
+            \item gill-attachment
+            \item gill-color
+            \item stalk-root
+            \item stalk-surface-above-ring
+            \item stalk-surface-below-ring
+            \item stalk-color-above-ring
+            \item stalk-color-below-ring
+            \item veil-type
+            \item veil-color
+            \item ring-type
+            \item spore-print-color
+            \item habitat
+            \item gill-spacing
+            \item gill-size
+            \item stalk-shape
+            \item ring-number
+            \item population
+        \end{enumerate}
+    \end{multicols}
+    \noindent
+    These features have been further enumerated in Appendix A.
+
+    % 1.3
+    \subsection{Encoding the Data}
+
+    Note that all the features in our dataset are categorical variables. As a result, to
+    proceed with evaluation of model performance, we must first encode these variables
+    into numerical/binary values.\\
+
+    We need to deal with two kinds of categorical variables when encoding the features
+    into numerical data. These are ordinal categorical variables and nominal categorical
+    variables.\footnote{Information on which features are which kind of categorical
+    variables can be found in Appendix A.} We will use different techniques to encode
+    both of these kinds of categorical variables as they inherently represent different
+    kinds of categorical data.\\
+
+    To encode nominal categorical variables, we will use one-hot binary features. For
+    instance, if a feature $ f $ from a feature set $ \mathcal{F} $ has $ k $ different
+    categorical values, we can create $ k $ different binary features for each feature
+    $ f $ of this kind. This is done because the values of each such feature do not hold
+    any ordinal information, in that there should not be different weights for having a
+    specific value of a specific feature.\\
+
+    The ordinal categorical variables, on the other hand, have been encoded as numerical
+    labels, as these informations contain valueable information about the 'scale' of a
+    certain feature. For instance, if a feature $ f $ from a feature set $ \mathcal{F} $
+    has $ k $ different features, it would be changed into numeric values
+    $ i \in 0,1,...,k-1$.\\
+
+    \noindent
+    The following code segment is used to encode the data.\footnote{This can be found in
+    the data.py file.}\\
+
+    \begin{python}
+def encode(df):
+    # Encode Ordinal Variables
+    ordinal_columns = ['gill-spacing', 'gill-size',
+            'stalk-shape', 'ring-number', 'population', 'class']
+    columns = ordinal_columns[:]
+
+    for column in columns:
+        df[column] = df[column].astype('category')
+
+        columns = df.select_dtypes(['category']).columns
+        df[columns] = df[columns].apply(lambda x: x.cat.codes)
+
+    # Encoding Nominal Variables
+    columns = ordinal_columns[:]
+
+    for column in df:
+        if column not in columns:
+            dummies = pd.get_dummies(df.pop(column))
+            column_names = [column + "_" + x for x in dummies.columns]
+            dummies.columns = column_names
+            df = df.join(dummies)
+
+    return df
+    \end{python}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    % Appendices
+    % Appendix
+    \newpage
+    \section*{\underline{Appendix A: Data Description}}
+    Classes: edible=e, poisonous=p (y-values)\\
+
+    Size of dataset (before encoding): $ (n=8124, d=22) $
+
+    Size of dataset (after encoding): $ (n=8124, d=107) $
+
+    Attribute Information and Encoding:
+    \begin{enumerate}
+        \item \underline{Nominal Categorical Variables:}\\
+        These variables will be encoded as binary one-hot features. As a result, each feature
+        in this category would be replace by the $ k $ features in the encoded dataset if the
+        feature has $ k $ possible values. These featues include:
+        \begin{enumerate}[label=\roman*.]
+            \item \textbf{cap-shape}:
+                bell=b,
+                conical=c,
+                convex=x,
+                flat=f,
+                knobbed=k,
+                sunken=s
+            \item \textbf{cap-surface}:
+                fibrous=f,
+                grooves=g,
+                scaly=y,
+                smooth=s
+            \item \textbf{cap-color}:
+                brown=n,
+                buff=b,
+                cinnamon=c,
+                gray=g,
+                green=r,
+                pink=p,
+                purple=u,
+                red=e,
+                white=w,
+                yellow=y
+            \item \textbf{bruises}:
+                bruises=t,
+                no=f
+            \item \textbf{odor}:
+                almond=a,
+                anise=l,
+                creosote=c,
+                fishy=y,
+                foul=f,
+                musty=m,
+                none=n,
+                pungent=p,
+                spicy=s
+            \item \textbf{gill-attachment}:
+                attached=a,
+                descending=d,
+                free=f,
+                notched=n
+            \item \textbf{gill-color}:
+                black=k,
+                brown=n,
+                buff=b,
+                chocolate=h,
+                gray=g,
+                green=r,
+                orange=o,
+                pink=p,
+                purple=u,
+                red=e,
+                white=w,
+                yellow=y
+            \item \textbf{stalk-root}:
+                bulbous=b,
+                club=c,
+                cup=u,
+                equal=e,
+                rhizomorphs=z,
+                rooted=r,
+                missing=?
+            \item \textbf{stalk-surface-above-ring}:
+                fibrous=f,
+                scaly=y,
+                silky=k,
+                smooth=s
+            \item \textbf{stalk-surface-below-ring}:
+                fibrous=f,
+                scaly=y,
+                silky=k,
+                smooth=s
+            \item \textbf{stalk-color-above-ring}:
+                brown=n,
+                buff=b,
+                cinnamon=c,
+                gray=g,
+                orange=o,
+                pink=p,
+                red=e,
+                white=w,
+                yellow=y
+            \item \textbf{stalk-color-below-ring}:
+                brown=n,
+                buff=b,
+                cinnamon=c,
+                gray=g,
+                orange=o,
+                pink=p,
+                red=e,
+                white=w,
+                yellow=y
+            \item \textbf{veil-type}:
+                partial=p,
+                universal=u
+            \item \textbf{veil-color}:
+                brown=n,
+                orange=o,
+                white=w,
+                yellow=y
+            \item \textbf{ring-type}:
+                cobwebby=c,
+                evanescent=e,
+                flaring=f,
+                large=l,
+                none=n,
+                pendant=p,
+                sheathing=s,
+                zone=z
+            \item \textbf{spore-print-color}:
+                black=k,
+                brown=n,
+                buff=b,
+                chocolate=h,
+                green=r,
+                orange=o,
+                purple=u,
+                white=w,
+                yellow=y
+            \item \textbf{habitat}:
+                grasses=g,
+                leaves=l,
+                meadows=m,
+                paths=p,
+                urban=u,
+                waste=w,
+                woods=d
+        \end{enumerate}
+        \item \underline{Ordinal Categorical Variables:}\\
+        These variables will be encoded in place by encoding labels, as the data here has
+        ordinal meaning to it. These variables include:
+        \begin{enumerate}[label=\roman*.]
+            \item \textbf{gill-spacing}:
+                close=c$\to$0,
+                crowded=w$\to$1,
+                distant=d$\to$2
+            \item \textbf{gill-size}:
+                broad=b$\to$0,
+                narrow=n$\to$1
+            \item \textbf{stalk-shape}:
+                enlarging=e$\to$0,
+                tapering=t$\to$1
+            \item \textbf{ring-number}:
+                none=n$\to$0,
+                one=o$\to$1,
+                two=t$\to$2
+            \item \textbf{population}:
+                abundant=a$\to$0,
+                clustered=c$\to$1,
+                numerous=n$\to$2,
+                scattered=s$\to$3,
+                several=v$\to$4,
+                solitary=y$\to$5
+        \end{enumerate}
+    \end{enumerate}
+
+\end{document}
