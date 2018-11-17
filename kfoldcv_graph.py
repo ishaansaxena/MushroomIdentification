@@ -26,28 +26,13 @@ if __name__ == '__main__':
 
     models = []
 
-    models.append(("Perceptron-alpha 0.0001", Perceptron, {'max_iter':100, 'alpha':0.0001}))
-    models.append(("Perceptron-alpha 1", Perceptron, {'max_iter':100, 'alpha':1}))
-    models.append(("Perceptron-alpha 100", Perceptron, {'max_iter':100, 'alpha':100}))
-    models.append(("Perceptron-pentalty l2", Perceptron, {'max_iter':100, 'penalty':'l2'}))
-    models.append(("Perceptron-pentalty l1", Perceptron, {'max_iter':100, 'penalty':'l1'}))
-    models.append(("Perceptron-pentalty elasticnet", Perceptron, {'max_iter':100, 'penalty':'elasticnet'}))
-
+    models.append(("Perceptron", Perceptron, {'max_iter':500}))
     models.append(("Adaboost-n_estimators 10", AdaBoostClassifier, {'n_estimators':10}))
     models.append(("Adaboost-n_estimators 50", AdaBoostClassifier, {'n_estimators':50}))
-    models.append(("Adaboost-n_estimators 100", AdaBoostClassifier, {'n_estimators':100}))
-    models.append(("Adaboost-learning_rate 1", AdaBoostClassifier, {'learning_rate':1}))
-    models.append(("Adaboost-learning_rate 0.5", AdaBoostClassifier, {'learning_rate':0.5}))
-    models.append(("Adaboost-algorithm SAMME", AdaBoostClassifier, {'algorithm':'SAMME'}))
-    models.append(("Adaboost-algorithm SAMME.R", AdaBoostClassifier, {'algorithm':'SAMME.R'}))
-
     models.append(("SVM-linear", SVC, {'kernel':'linear'}))
     models.append(("SVM-poly", SVC, {'kernel':'poly'}))
     models.append(("SVM-rbf", SVC, {'kernel':'rbf'}))
-
     models.append(("LR", LogisticRegression, {}))
-
-    # models.append(("XGB", XGBClassifier, {}))
 
     # For each algorithm
     for name, model, kwargs in models:
@@ -76,7 +61,7 @@ if __name__ == '__main__':
         }, index = folds)
 
         lines = df.plot.line()
-        filename = project.results + "model_accuracy_vs_folds_" + name + ".png"
+        filename = "reports/preliminary_report/img/" + "model_accuracy_vs_folds_" + name + ".png"
         plt.savefig(filename, bbox_inches='tight')
 
         print ("\tTime: %.3fs" % (time.time() - start))

@@ -1,5 +1,5 @@
 import data
-import sol_greedysubset as gr
+import greedySubset as gr
 import project as pr
 import matplotlib.pyplot as plt
 import numpy as np
