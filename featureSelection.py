@@ -14,10 +14,10 @@ def run(F):
 
     #Greedy Subset
     t2, t2_S = gr.run(F,X,c_Y)
-    
+
     print(t2)
     print(t2_S)
-    
+
     df = pd.DataFrame({
         'feature' : t2,
         'weight' : t2_S,
@@ -29,7 +29,7 @@ def run(F):
 
     m = (np.mean(df['weightabs'].values)/2)
     df = df[df['weightabs'] > m]
-    
+
     result = df.groupby(["feature"])['weightabs'].aggregate(np.median).reset_index().sort_values('weightabs')
 
     sns.barplot(x='feature', y="weight", data=df, order=result['feature'])
@@ -39,6 +39,5 @@ def run(F):
     plt.ylabel('Weight')
     plt.title('Greedy Subset')
     plt.show()
-
 
 run(107)
