@@ -42,7 +42,7 @@ def run(F,X,y):
     #thetaS
     X_ = X[:,S]
     thetaS = linreg.run(X_,y)
-    return (np.asarray(S).reshape(F,1), thetaS)
+    return (np.asarray(S), np.asarray(thetaS))
 
 # X,y = createlinregdata.run(10,4)
 # F = 4
