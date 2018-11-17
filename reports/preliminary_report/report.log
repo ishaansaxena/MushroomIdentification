@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  16 NOV 2018 16:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  16 NOV 2018 19:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -915,63 +915,169 @@ Underfull \hbox (badness 10000) in paragraph at lines 129--132
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 133--139
-
- []
-
 [1
 
-{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 140--146
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 147--152
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 153--156
-
- []
-
-(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
+{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
-) [2]
-Underfull \hbox (badness 10000) in paragraph at lines 234--235
+)
+Underfull \hbox (badness 10000) in paragraph at lines 205--211
+
+ []
+
+[2] <./img/46.png, id=159, 1768.6075pt x 837.1275pt>
+File: ./img/46.png Graphic file (type png)
+ <use ./img/46.png>
+Package pdftex.def Info: ./img/46.png used on input line 227.
+(pdftex.def)             Requested size: 477.53041pt x 226.02744pt.
+
+Overfull \hbox (7.77539pt too wide) in paragraph at lines 227--231
+ [] 
+ []
+
+[3pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.246         \item
+                    Perceptron <./img/46.png>]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 252.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 252.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 253--258
 
  []
 
 
-Overfull \hbox (4.37758pt too wide) in paragraph at lines 259--270
+Underfull \hbox (badness 10000) in paragraph at lines 269--273
+
+ []
+
+[4]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 309.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 309.
+
+<./img/model_accuracy_vs_folds_Perceptron.png, id=200, 489.9906pt x 384.4764pt>
+File: ./img/model_accuracy_vs_folds_Perceptron.png Graphic file (type png)
+ <use ./img/model_accuracy_vs_folds_Perceptron.png>
+Package pdftex.def Info: ./img/model_accuracy_vs_folds_Perceptron.png used on input line 312.
+(pdftex.def)             Requested size: 171.49927pt x 134.56874pt.
+ <./img/model_accuracy_vs_folds_SVM-linear.png, id=201, 489.9906pt x 384.4764pt>
+File: ./img/model_accuracy_vs_folds_SVM-linear.png Graphic file (type png)
+ <use ./img/model_accuracy_vs_folds_SVM-linear.png>
+Package pdftex.def Info: ./img/model_accuracy_vs_folds_SVM-linear.png used on input line 328.
+(pdftex.def)             Requested size: 146.9983pt x 115.3438pt.
+ <./img/model_accuracy_vs_folds_SVM-poly.png, id=202, 489.9906pt x 384.4764pt>
+File: ./img/model_accuracy_vs_folds_SVM-poly.png Graphic file (type png)
+ <use ./img/model_accuracy_vs_folds_SVM-poly.png>
+Package pdftex.def Info: ./img/model_accuracy_vs_folds_SVM-poly.png used on input line 329.
+(pdftex.def)             Requested size: 146.9983pt x 115.3438pt.
+ <./img/model_accuracy_vs_folds_SVM-rbf.png, id=203, 489.9906pt x 384.4764pt>
+File: ./img/model_accuracy_vs_folds_SVM-rbf.png Graphic file (type png)
+ <use ./img/model_accuracy_vs_folds_SVM-rbf.png>
+Package pdftex.def Info: ./img/model_accuracy_vs_folds_SVM-rbf.png used on input line 330.
+(pdftex.def)             Requested size: 146.9983pt x 115.3438pt.
+ [5pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.339         2-f
+                 old: (mu=0.884, sigma=0.087)pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.339         2-f
+                 old: (mu=0.884, sigma=0.087) <./img/model_accuracy_vs_folds_Perceptron.png> <./img/model_accuracy_vs_folds_SVM-linear.png> <./img/model_accuracy_vs_folds_SVM-poly.png> <./img/model_accuracy_vs_folds_SVM-rbf.png>] <./img/model_accuracy_vs_folds_LR.png, id=226, 489.9906pt x 384.4764pt>
+File: ./img/model_accuracy_vs_folds_LR.png Graphic file (type png)
+ <use ./img/model_accuracy_vs_folds_LR.png>
+Package pdftex.def Info: ./img/model_accuracy_vs_folds_LR.png used on input line 357.
+(pdftex.def)             Requested size: 171.49927pt x 134.56874pt.
+ <./img/model_accuracy_vs_folds_Adaboost-n_estimators10.png, id=227, 489.9906pt x 384.4764pt>
+File: ./img/model_accuracy_vs_folds_Adaboost-n_estimators10.png Graphic file (type png)
+ <use ./img/model_accuracy_vs_folds_Adaboost-n_estimators10.png>
+Package pdftex.def Info: ./img/model_accuracy_vs_folds_Adaboost-n_estimators10.png used on input line 373.
+(pdftex.def)             Requested size: 146.9983pt x 115.3438pt.
+ <./img/model_accuracy_vs_folds_Adaboost-n_estimators50.png, id=228, 489.9906pt x 384.4764pt>
+File: ./img/model_accuracy_vs_folds_Adaboost-n_estimators50.png Graphic file (type png)
+ <use ./img/model_accuracy_vs_folds_Adaboost-n_estimators50.png>
+Package pdftex.def Info: ./img/model_accuracy_vs_folds_Adaboost-n_estimators50.png used on input line 374.
+(pdftex.def)             Requested size: 146.9983pt x 115.3438pt.
+
+./report.tex:377: Missing $ inserted.
+<inserted text> 
+                $
+l.377             and 50 n_estimators}
+                                      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./report.tex:377: Missing $ inserted.
+<inserted text> 
+                $
+l.377             and 50 n_estimators}
+                                      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+[6pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.379     \end{center}
+                       <./img/model_accuracy_vs_folds_LR.png>] [7pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.396     \newpage
+                   <./img/model_accuracy_vs_folds_Adaboost-n_estimators10.png> <./img/model_accuracy_vs_folds_Adaboost-n_estimators50.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 398--399
+
+ []
+
+
+Overfull \hbox (4.37758pt too wide) in paragraph at lines 423--434
 []\OT1/cmr/bx/n/10 cap-color\OT1/cmr/m/n/10 : brown=n, buff=b, cin-na-mon=c, gray=g, green=r, pink=p, pur-ple=u, red=e, white=w,
  []
 
-[3]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 403.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 403.
+[8]
+Overfull \hbox (2.74406pt too wide) in paragraph at lines 602--603
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[9] [10]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 637.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 637.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 403.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 403.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 637.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 637.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: EA1F2A997E0D1B4EA01FA6BEA6045C1C;267.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 403.
+(rerunfilecheck)             Checksum: 35A72743B22575F126A3CEDA8A331E4C;1306.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 637.
  ) 
 Here is how much of TeX's memory you used:
- 19517 strings out of 493014
- 353061 string characters out of 6133351
- 442355 words of memory out of 5000000
- 22647 multiletter control sequences out of 15000+600000
- 13743 words of font info for 54 fonts, out of 8000000 for 9000
+ 19858 strings out of 493014
+ 358418 string characters out of 6133351
+ 452019 words of memory out of 5000000
+ 22829 multiletter control sequences out of 15000+600000
+ 14050 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,12n,54p,413b,1335s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on report.pdf (3 pages, 147098 bytes).
+ 55i,12n,54p,413b,1903s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on report.pdf (10 pages, 379497 bytes).
 PDF statistics:
- 185 PDF objects out of 1000 (max. 8388607)
- 166 compressed objects within 2 object streams
- 82 named destinations out of 1000 (max. 500000)
- 45 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 463 PDF objects out of 1000 (max. 8388607)
+ 415 compressed objects within 5 object streams
+ 231 named destinations out of 1000 (max. 500000)
+ 197 words of extra memory for PDF output out of 10000 (max. 10000000)
 
