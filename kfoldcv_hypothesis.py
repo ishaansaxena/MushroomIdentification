@@ -1,15 +1,8 @@
-import matplotlib.pyplot as plt
-
-import time
 import numpy as np
-import pandas as pd
-
 import hypothesisTest as hypt
 
 import data
-import project
 import kfoldcv
-import metrics
 
 if __name__ == '__main__':
 
