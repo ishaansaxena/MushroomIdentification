@@ -4,6 +4,8 @@ import time
 import numpy as np
 import pandas as pd
 
+import hypothesisTest as hypt
+
 import data
 import project
 import kfoldcv
@@ -34,22 +36,21 @@ if __name__ == '__main__':
     models.append(("SVM-rbf", SVC, {'kernel':'rbf'}))
     models.append(("LR", LogisticRegression, {}))
 
+    model_results = []
+
     # For each algorithm
     for name, model, kwargs in models:
 
-        print ("Model:\t%s" % (name))
-        start = time.time()
-
-        # Mean accuracy and std dev
-        m = []
-        s = []
-
-        # For each fold size
-
         Z = kfoldcv.run(X, y, model, 5, **kwargs)
-        m.append(np.mean(Z))
-        s.append(np.std(Z))
-        print ("\t%d-fold: (mu=%.3f, sigma=%.3f)" % (5, np.mean(Z), np.std(Z)))
+        model_results.append((name, np.mean(Z), np.std(Z)))
 
 
-        print ("\tTime: %.3fs" % (time.time() - start))
+    k = 5
+    alpha = 0.05
+
+    for m1, mean_1, std_dev_1 in model_results :
+        for m2, mean_2, std_dev_2 in model_results :
+            if m1 == m2:
+                continue
+            if hypt.hypothesisTesting(mean_1, std_dev_1, mean_2, std_dev_2, k, alpha):
+                print m1 + ' over ' + m2
