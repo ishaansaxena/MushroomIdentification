@@ -18,7 +18,7 @@ if __name__ == '__main__':
     X = X.values
 
     # Import models
-    from xgboost import XGBClassifier
+    # from xgboost import XGBClassifier
     from sklearn.svm import SVC
     from sklearn.linear_model import Perceptron
     from sklearn.ensemble import AdaBoostClassifier
@@ -76,7 +76,7 @@ if __name__ == '__main__':
         }, index = folds)
 
         lines = df.plot.line()
-        filename = project.results + name + "_accuracy_vs_folds.png"
+        filename = project.results + "model_accuracy_vs_folds_" + name + ".png"
         plt.savefig(filename, bbox_inches='tight')
 
         print ("\tTime: %.3fs" % (time.time() - start))
