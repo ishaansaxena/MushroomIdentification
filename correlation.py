@@ -5,6 +5,12 @@ import data
 import numpy as np
 import seaborn as sns
 
+#def chi_sq_test(df, col1, col2):
+#	result_list[]
+#	for car in range(int(df[col[1].min()), int(df[var2].max())+1):
+#		result_list.append(create_list(df, col1, cat, col2))
+#	return scs.chi2_contigency
+
 def sorting(numbers):
   return sorted(numbers[1],key = abs)
 
