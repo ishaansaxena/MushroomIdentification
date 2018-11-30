@@ -1,7 +1,10 @@
+from sklearn.model_selection import train_test_split
+
 import numpy as np
 import pandas as pd
 
 import project
+import greedySubset as gs
 
 def load(return_full_df=False):
     df = pd.read_csv(project.config['filename'])
@@ -39,3 +42,34 @@ def encode(df):
             df = df.join(dummies)
 
     return df
+
+# Input:    F = Number of Features to be selected
+#           test_size = size of test subset
+# Output:   Z = training set with reduced features
+#           Z_ = testing set with reduced features
+#           or
+#           X_train, X_test, y_train, y_test
+def get_reduced_data(test_size, F, return_full_df=False):
+    # Load encoded data
+    X, y = load()
+
+    # Split data into Test-Train Sets
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=test_size, random_state=42
+    )
+
+    # Get subset of features
+    S, theta = gs.run(F, X_train.values, y_train)
+
+    # Choose subset of X_train and X_test
+    X_train = X_train.iloc[:, S]
+    X_test = X_test.iloc[:, S]
+
+    if not return_full_df:
+        return X_train, X_test, y_train, y_test
+
+    # Merge to form df if full dfs are required
+    label = 'class'
+    X_train[label] = y_train
+    X_test[label] = y_test
+    return X_train, X_test
