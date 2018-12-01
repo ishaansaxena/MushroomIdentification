@@ -12,7 +12,7 @@ import metrics
 if __name__ == '__main__':
 
     # Load (X, y) dataset
-    X, y = data.load()
+    X, X_, y, y_ = data.get_reduced_data()
 
     # Get X as a numpy matrix
     X = X.values
@@ -26,9 +26,10 @@ if __name__ == '__main__':
 
     models = []
 
-    models.append(("Perceptron", Perceptron, {'max_iter':500}))
+    models.append(("Perceptron", Perceptron, {'max_iter':80}))
+    models.append(("Adaboost-n_estimators 3", AdaBoostClassifier, {'n_estimators':3}))
+    models.append(("Adaboost-n_estimators 5", AdaBoostClassifier, {'n_estimators':5}))
     models.append(("Adaboost-n_estimators 10", AdaBoostClassifier, {'n_estimators':10}))
-    models.append(("Adaboost-n_estimators 50", AdaBoostClassifier, {'n_estimators':50}))
     models.append(("SVM-linear", SVC, {'kernel':'linear'}))
     models.append(("SVM-poly", SVC, {'kernel':'poly'}))
     models.append(("SVM-rbf", SVC, {'kernel':'rbf'}))

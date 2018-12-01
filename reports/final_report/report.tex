@@ -207,9 +207,41 @@ def encode(df):
     \end{python}
 
     % 2
+    \section{Machine Learning Pipeline}
+    Before we proceed, let's briefly go through our machine learning pipeline. Consider
+    the encoded dataset $ \mathcal{D} $. Given this dataset, we will proceed to solve our
+    classification problem by taking the following steps:
+
+    \begin{enumerate}
+        \item Feature selection and test-train split:\footnote{See get\_reduced\_data in data.py}
+        \begin{enumerate}[label=\roman*.]
+            \item Split $ \mathcal{D} $ into the training/validation set $ D $ and testing
+            set $ D' $.
+            \item Get a set of $ f $ best features from $ D $; call this set $ \mathcal{F} $.
+            \item Create new training $ Z $ and testing sets $ Z'_1, Z'_2 $ by
+            choosing only the subset of features $ \mathcal{F} $ from $ D $ and $D'$ respectively.
+        \end{enumerate}
+        \item Model selection and hyperparameter tuning:\footnote{See modelSelection.py}
+        \begin{enumerate}[label=\roman*.]
+            \item Choose a set of models $ \mathcal{M} $ and a possible set parameters
+            $ \mathcal{P} $ for each model.
+            \item For each model $ M \in \mathcal{M} $, choose the best set of parameters
+            $ P^* \in\mathcal{P} $ via hyperparameter tuning. Note that the hyperparameter
+            tuning process trains a model on $ Z $ with each possible parameter and evaluates
+            performance on $ Z'_1 $.
+            \item Use k-fold Cross Validation on testing set $ Z'_2 $ to get mean accuracy
+            and standard deviations for each model $ M \in \mathcal{M} $ with it's
+            optimal hyperparameters $ P^* \in\mathcal{P} $.
+            \item Compare models with hypothesis testing and choose best model.
+        \end{enumerate}
+    \end{enumerate}
+
+    We will present the metrics and evaluation results for the best selected model.
+
+    % 3
     \section{Feature Selection}
 
-    % 2.1
+    % 3.1
     \subsection{The Need for Feature Selection}
     Feature selection is a useful technique when we want to better understand the input
     feature set. Having fewer features also leads to a more interpretable model, and is
@@ -222,12 +254,12 @@ def encode(df):
     complexity of the model. This is a very important aspect, as a less complex model
     is more useful for generalization.
 
-    % 2.2
+    % 3.2
     \subsection{Feature Selection Technique}
     We are using Greedy Subset Selection for Feature Selection. We will talk more about
     the selection technique and its implementation in the final report.
 
-    % 2.3
+    % 3.3
     \subsection{Greedy Subset Selection Results}
     The following are the 46 best features and their weights obtained from Greedy Subset
     Selection:
@@ -243,7 +275,7 @@ def encode(df):
     We will talk more about reduction of features, how that impacts our problem,
     and about what these specific features are in the final report.
 
-    % 3
+    % 4
     \section{Machine Learning Models}
 
     In order to solve the classification problem,
@@ -383,7 +415,7 @@ def encode(df):
         \includegraphics[scale=0.3]{model_accuracy_vs_folds_Adaboost-n_estimators50.png}
         \begin{figure}[!h]
             \caption{Adaboost accuracy in 2,3,5-Fold CV. From left to right, we have 10
-            and 50 n_estimators}
+            and 50 n\_estimators}
         \end{figure}
     \end{center}
     We get the following results for Adaboost when we run kfoldcv\_graph.py:

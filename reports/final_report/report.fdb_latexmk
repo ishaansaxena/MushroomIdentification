@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1543609137 "report.tex" "report.pdf" "report" 1543609190
+["pdflatex"] 1543622281 "report.tex" "report.pdf" "report" 1543622282
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -171,11 +171,11 @@
   "img/model_accuracy_vs_folds_SVM-linear.png" 1543608512 19720 106448b819c419201f81628ee3e98fe5 ""
   "img/model_accuracy_vs_folds_SVM-poly.png" 1543608512 21974 f9a2843936085dd9a86c7fb5f2520bfc ""
   "img/model_accuracy_vs_folds_SVM-rbf.png" 1543608512 20152 38d416a20a9fa4e6fd813b2aa6a9955b ""
-  "report.aux" 1543609138 3350 dacb06d5ae003301c4b075df7c49288c ""
-  "report.out" 1543609138 1306 35a72743b22575f126a3ceda8a331e4c ""
-  "report.tex" 1543609189 21773 9e3d1432c1469f07a819a0515186255e ""
+  "report.aux" 1543622282 3449 fd8710ae5cc01f7ef8d0162e3f92f31c ""
+  "report.out" 1543622282 1367 79ae79682260979feff0e58fbd802efe ""
+  "report.tex" 1543622280 23650 1227254d2d43fb29e8e16c19ccb5bb29 ""
   (generated)
-  "report.log"
-  "report.aux"
   "report.out"
+  "report.aux"
   "report.pdf"
+  "report.log"
