@@ -49,7 +49,7 @@ def encode(df):
 #           Z_ = testing set with reduced features
 #           or
 #           X_train, X_test, y_train, y_test
-def get_reduced_data(test_size, F, return_full_df=False):
+def get_reduced_data(test_size=0.5, F=42, return_full_df=False):
     # Load encoded data
     X, y = load()
 
