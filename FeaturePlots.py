@@ -8,7 +8,6 @@ import numpy as np
 def FeatPlots():
     #Use Old Data for labels
     df = pd.read_csv(project.config['filename'])
-
     cols = df.select_dtypes(include=['object']).columns
 
     # Get Plots for Feature Frequencies
