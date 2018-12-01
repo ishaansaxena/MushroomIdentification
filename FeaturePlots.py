@@ -11,7 +11,6 @@ def FeatPlots():
     cols = df.select_dtypes(include=['object']).columns
 
     # Get Plots for Feature Frequencies
-
     for c in cols:
         labs = df[c].value_counts().axes[0].tolist()
         ind = np.arange(len(labs))

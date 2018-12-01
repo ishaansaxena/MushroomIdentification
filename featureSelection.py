@@ -5,15 +5,19 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 import pandas as pd
+from sklearn.model_selection import train_test_split
 
 def run(F):
-    c_X, c_Y = data.load()
-    print(c_Y)
+    # Load encoded data
+    X, y = data.load()
 
-    X = c_X.values
+    # # Split data into Test-Train Sets
+    X_train, X_test, y_train, y_test = train_test_split(
+         X, y, test_size=0.5, random_state=42
+    )
 
     #Greedy Subset
-    t2, t2_S = gr.run(F,X,c_Y)
+    t2, t2_S = gr.run(F,X_train.values,y_train)
 
     print(t2)
     print(t2_S)
@@ -40,4 +44,5 @@ def run(F):
     plt.title('Greedy Subset')
     plt.show()
 
+    
 run(107)

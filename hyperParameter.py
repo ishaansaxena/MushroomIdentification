@@ -23,11 +23,12 @@ def tune(X_train, X_test, y_train, y_test, model, **kwargs):
 		m.fit(X_train, y_train)
 		y_pred = m.predict(X_test)
 		acc = metrics.accuracy_score(y_test, y_pred)
-		
+			
 		#Update Best accuracy
 		if (acc > maxi):
 			maxi = acc
 			bestel = test
+
 
 	return bestel 
 
