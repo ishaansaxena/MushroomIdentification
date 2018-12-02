@@ -273,9 +273,9 @@ INPUT ./img/model_accuracy_vs_folds_SVM-rbf.png
 INPUT ./img/model_accuracy_vs_folds_LR.png
 INPUT ./img/model_accuracy_vs_folds_LR.png
 INPUT ./img/model_accuracy_vs_folds_LR.png
-INPUT ./img/model_accuracy_vs_folds_Adaboost.png
-INPUT ./img/model_accuracy_vs_folds_Adaboost.png
-INPUT ./img/model_accuracy_vs_folds_Adaboost.png
+INPUT ./img/model_accuracy_vs_folds_AdaBoost.png
+INPUT ./img/model_accuracy_vs_folds_AdaBoost.png
+INPUT ./img/model_accuracy_vs_folds_AdaBoost.png
 INPUT ./img/roc_SVM-Linear.png
 INPUT ./img/roc_SVM-Linear.png
 INPUT ./img/roc_SVM-Linear.png
@@ -288,9 +288,9 @@ INPUT ./img/roc_SVM-RBF.png
 INPUT ./img/roc_LR.png
 INPUT ./img/roc_LR.png
 INPUT ./img/roc_LR.png
-INPUT ./img/roc_Adaboost.png
-INPUT ./img/roc_Adaboost.png
-INPUT ./img/roc_Adaboost.png
+INPUT ./img/roc_AdaBoost.png
+INPUT ./img/roc_AdaBoost.png
+INPUT ./img/roc_AdaBoost.png
 INPUT ./img/vc.png
 INPUT ./img/vc.png
 INPUT ./img/vc.png

@@ -80,7 +80,7 @@ showstringspaces=false            %
     \subsection{Definition of the Problem}
 
     Given a dataset $ \mathcal{D} $ with $ n=8124 $ samples where each sample represents a
-    mushroom with features being the observations about the characterestics of the mushrooms
+    mushroom with features being the observations about the characteristics of the mushrooms
     such as odor, color, etc., we aim to test and compare various supervised learning models
     for the problem of classifying each sample into either poisonous or edible. Further,
     we will optimize the Hyperparameters of the model which initially performs the best
@@ -158,7 +158,7 @@ showstringspaces=false            %
     \subsubsection{Ordinal Categorical Variables}
 
     The ordinal categorical variables, on the other hand, have been encoded as numerical
-    labels, as these informations contain valueable information about the 'scale' of a
+    labels, as these features contain valuable information about the 'scale' of a
     certain feature. For instance, if a feature $ f $ from a feature set $ \mathcal{F} $
     has $ k $ different features, it would be changed into numeric values
     $ i \in 0,1,...,k-1$.
@@ -195,7 +195,7 @@ def encode(df):
     \end{python}
 
     \noindent
-    We can now see how our encoded dataset $ \mathcal{D} $ is shaped, and then proceed
+    We can now see how our encoded dataset $ \mathcal{D} $ is shaped and then proceed
     further in our task to classify data.
 
     \begin{python}
@@ -229,7 +229,7 @@ def encode(df):
             $ P^* \in\mathcal{P} $ via hyperparameter tuning. Note that the hyperparameter
             tuning process trains a model on $ Z $ with each possible parameter and evaluates
             performance on $ Z'_1 $.
-            \item Use $k$-fold Cross Validation on testing set $ Z'_2 $ to get mean accuracy
+            \item Use $k$-fold Cross Validation on the testing set $ Z'_2 $ to get mean accuracy
             and standard deviations for each model $ M \in \mathcal{M} $ with it's
             optimal hyperparameters $ P^* \in\mathcal{P} $.
             \item Compare models with hypothesis testing and choose best model.
@@ -283,7 +283,7 @@ def encode(df):
     Our processed data-set contains 8124 samples and 107 features. Hence, the need for
     reduction of features arises from the size of the dataset, specifically, the large
     number of features our models need to learn from and the fact that certain features
-    have a high correlations making addition of all features redundant. Further, a lot of
+    have a high correlation making addition of all features redundant. Further, a lot of
     the features have little or no correlation with the class label and
     adding such features just plainly increases our computation time without actually
     helping our model make ‘better’ decisions (in some cases, they even increase noise and
@@ -292,7 +292,7 @@ def encode(df):
     Thus, reduction of features increases the efficiency
     of training our models, helps us remove redundant features from our data set and
     learn only from features which have a considerable impact on our class labels.
-    Reduction of features also helps in a control over complexity of some models, as it
+    Reduction of features also helps in a control over the complexity of some models, as it
     helps with better generalizability.\\
 
     The best feature, as can be seen in the graph above is Feature 96, namely,
@@ -314,7 +314,7 @@ def encode(df):
 
     % 4
     \section{Cross Validation}
-    We use cross-validation to evaluate the chosen predictive model by paritioning it into
+    We use cross-validation to evaluate the chosen predictive model by partioning it into
     smaller train and test datasets wherein we train the model on the training set and
     evaluate it on the testing set. By using better cross-validation techniques, we can
     get a better understanding of how well our model will generalize, and whether we might
@@ -329,7 +329,7 @@ def encode(df):
 
     \subsection{Basic Methodology}
     Given the original encoded dataset $ \mathcal{D} $, we create a 40:20:40 split,
-    namely $ D, D'_1, D'_2 $. We conduct our feature selection process as descibed in the
+    namely $ D, D'_1, D'_2 $. We conduct our feature selection process as described in the
     previous section on $ D $ to obtain a reduced subset of features $ \mathcal{F} $.
     This reduced subset of features is used to obtain $ Z, Z'_1, Z'_2 $, which are used
     as a train-validate-test sets respectively. Each model is initially trained with
@@ -350,7 +350,7 @@ def encode(df):
     with a reduced number of features. After doing so, we further split $ Z' $ into
     $ Z'_1, Z'_2 $ such that $ |Z| \approx 3200, |Z'_1| \approx 1600, |Z'_2| \approx 3200 $.
     Note that \underline{all splits are random}, and as a result, differing
-    results may be obtain for different splits of the data.\footnote{As we'll see however,
+    results may be obtained for different splits of the data.\footnote{As we'll see however,
     even with different splits, we get multiple models which consistently performs with
     over 98\% accuracy on the 5-Fold CV on $ Z'_2 $. We will use vc-Dimensions of these
     models along with results from hypothesis testing (Section 7) to compare these models
@@ -415,7 +415,7 @@ def encode(df):
     Before we conduct any evaluations on a model, we obtain the optimal hyperparameters for
     the model such that we can compare different models based on each of their tuned
     hyperparameters. To do this, we utilize Grid Search. For instance, consider the following
-    set of possible hyperparameters for Adaboost:
+    set of possible hyperparameters for AdaBoost:
     \begin{python}
     {
         'n_estimators': [3, 5, 10, 20, 50],
@@ -430,7 +430,7 @@ def encode(df):
     The key represents the hyperparameters and the value represents the
     different values of the hyperparameters which we wish to check our models performance
     on. As such, we create a 'grid' of dimension $ h $ all possible combinations of the
-    hyperparameters, and search through the grid to see which combination of hyperparams
+    hyperparameters, and search through the grid to see which combination of hyperparameters
     gives us the best result when the model is trained on $ Z $ and evaluated on $ Z'_1 $.\\
 
     The following method returns the best set of parameters given a model, and its possible
@@ -477,7 +477,7 @@ def encode(df):
             \item RBF Kernel
         \end{enumerate}
         \item Logistic Regression
-        \item Adaboost
+        \item AdaBoost
     \end{enumerate}
     We conduct hyperparameter tuning and run 2,5,10-fold CV for each of these models as
     in modelSelection.py.
@@ -495,14 +495,14 @@ def encode(df):
     \end{center}
     \begin{center}
         \includegraphics[scale=0.3]{model_accuracy_vs_folds_LR.png}
-        \includegraphics[scale=0.3]{model_accuracy_vs_folds_Adaboost.png}
+        \includegraphics[scale=0.3]{model_accuracy_vs_folds_AdaBoost.png}
     \end{center}
 
     The following table contains the mean and standard deviations of 5-fold CV for each of
     the models on this instance of running modelSelection.py.\\
     \begin{center}
         \begin{tabular}{llllll}
-        Models   & Adaboost & Logistic Regression & SVM-Linear & SVM-RBF & SVM-Polynomial \\
+        Models   & AdaBoost & Logistic Regression & SVM-Linear & SVM-RBF & SVM-Polynomial \\
         $\mu$    & 0.99937  & 0.99937             & 0.99906    & 0.99222 & 0.00840        \\
         $\sigma$ & 0.00076  & 0.00076             & 0.00076    & 0.96395 & 0.00711
         \end{tabular}
@@ -528,18 +528,19 @@ def encode(df):
     \end{center}
     \begin{center}
         \includegraphics[scale=0.2]{roc_LR.png}
-        \includegraphics[scale=0.2]{roc_Adaboost.png}
+        \includegraphics[scale=0.2]{roc_AdaBoost.png}
     \end{center}
 
+    SVM-Linear, Logistic Regression and AdaBoost have AUC = 1.0; the false positive rate is zero for all observations for each of these algorithms. Since the false positive rate was zero for these three machine learning models, poisonous mushrooms would not be classified as edible mushrooms. On the other hand, SVM-poly and SVM-rbf have AUC = 0.9864 and AUC = 0.9989 respectively: some of the data in the testing set were false positives. SVM-poly and SVM-rbf can therefore dangerously classify poisonous mushrooms as edible.
 
     \subsection{A Note Variability of Results}
     Recall that, as we mentioned in Section 4.2 and in Footnote 8, we are splitting the
-    data into the three dataset we use for training and evaluation randomly. As such, the
+    data into the three datasets we use for training and evaluation randomly. As such, the
     results obtained on different instances may be different. Furthermore, the tuned
     hyperparameters might be different as well.\\
 
     However, we obtain very good results when performing 2,5,10-fold cross-validation using the
-    tuned SVM-linear, Logistic Regression, and Adaboost models consistently (more than 98\%
+    tuned SVM-linear, Logistic Regression, and AdaBoost models consistently (more than 98\%
     accuracy  each time). As a result, we must employ other techniques such as statistical
     hypothesis testing and comparison of VC-Dimensions of these models to determine which
     model best fits our problem. We have done so in section 7. Regardless, we have presented
@@ -572,18 +573,18 @@ def encode(df):
             $$ x > x_{1-\alpha, \nu} $$
             where $ \alpha $ is the level of significance (Note that we chose $ \alpha = 0.01 $).
     \end{enumerate}
-    We conduct hypothesis test for the model with the best average performance against all
+    We conduct hypothesis tests for the model with the best average performance against all
     the other models at the end of modelSelection.py using the t-test in hypothesisTest.py.
     The following are the results for one instance of running modelSelection.py (the same
     as the one for which results have been provided in section 6.1):
     \begin{lstlisting}
-    Adaboost > LR: False
-    Adaboost > SVM-linear: False
-    Adaboost > SVM-rbf: False
-    Adaboost > SVM-poly: True
+    AdaBoost > LR: False
+    AdaBoost > SVM-linear: False
+    AdaBoost > SVM-rbf: False
+    AdaBoost > SVM-poly: True
     \end{lstlisting}
     As we can see on various instances, it is not clear even from hypothesis testing whether
-    SVM-linear, Adaboost, or LogisticRegression are better suited to our problem. As a result,
+    SVM-linear, AdaBoost, or LogisticRegression are better suited to our problem. As a result,
     we must use some other way to compare how these models will
 
     \subsection{VC Dimensions and Generalizability}
@@ -591,8 +592,8 @@ def encode(df):
         $$ d_{vc} = \max_n\{n: N_F(n)=2^n\} $$
     where $ N_F $ is the growth function.\\
 
-    For our mushroom classification problem, we have tried multiple models and each of
-    models display different characteristics for different train-test data splits and have
+    For the mushroom classification problem, we have tried multiple models and each of
+    the models display different characteristics for different train-test data splits and have
     differing accuracies and standard deviations. However, since each of them consistently
     have a performance of more than 98\% accuracy, and since hypothesis testing is
     inconclusive, we can use VC-dimensions for each of these models to get a theoretical
@@ -619,27 +620,23 @@ def encode(df):
             \item SVM Linear: $ d_{vc} = d + 1 $
             \item SVM RBF: $ d_{vc} = \infty $
             \item Logistic Regression: $ d_{vc} = d + 1 $
-            \item Adaboost: $ d_{vc} \geq m/2 $
+            \item AdaBoost: $ d_{vc} \geq m/2 $
         \end{enumerate}
     \end{multicols}
 
-    Since we are using $d=50$ features, we are using at most $20$ decision stumps for Adaboost,
-    we know that Adaboost has a lower vc-Dimension than any of the other models we are using
+    Since we are using $d=50$ features, we are using at most $20$ decision stumps for AdaBoost,
+    we know that AdaBoost has a lower vc-Dimension than any of the other models we are using
     and would, as a result, have the lowest upper bound for the test error.
 
     % 8
     \section{Conclusion}
-    After doing hypothesis testing we concluded that Adaboost, SVM linear and logistic
-    regression perform equally well; when we compared each of them, we did not reject the
-    null hypothesis (mean accuracy are equal). So, to choose the best out of these three
-    we calculated the VC Dimension of each of these algorithms. As mentioned before,
-    Adaboost has the lowest VC-Dimension out of these three models and thus has the lowest
-    relative test-error bound. A lower test-error bound means that, theoretically, there
-    is lesser gap between training error and testing error. Hence, with Adaboost we can be
-    more certain about the testing error. Using feature selection in our algorithm
-    discarded all the “noise” features and improved generalization. Exploring the data,
-    helped us understand the correlations between the features and between a feature and
-    the class label.
+    The objective of this project was to create a model that accurately classifies a given mushroom based on its properties and informs us as to whether the mushroom is edible or not. Our initial dataset to create this model from had a few categorical variables which we processed into binary labels using one-hot encoding and ordinal variables when the attributes denoted the same. Following this, we conducted a brief exploration of our data to better understand the same. We plotted frequency count plots for edible and non-edible mushrooms for each feature to learn more about how different features affected the class labels.\\
+
+    After learning more about our data, we split our data to create a training set, validation set and testing set. We then conducted a greedy subset feature selection on our training set to discard the noisy features in our dataset, improve generalization and general efficiency of our algorithms. Following feature selection, we proceeded to tune hyperparameters for different machine learning models. Specifically: SVM – Linear, SVM – Polynomial, SVM – RBF, AdaBoost, Logistic Regression.\\
+
+    We tuned the hyper-parameters for each of these models and selected the hyperparameters for each model which yielded the highest accuracy. Following this, we performed k-fold cross validation on all of these models with their tuned hyperparameters. We used the data obtained from performing this cross-validation to perform statistical hypothesis testing to compare mean errors between the models and select the best model from all of them. After performing these tests, we were unable to reject the null hypothesis which stated that the mean errors were equal for AdaBoost, SVM-Linear and Logistic Regression. So, to find out and select a model from these three models we tried to compare the VC-Dimensions of each of these models.\\
+
+    As we observed, AdaBoost had the lowest VC-Dimension out of these three models and thus had the lowest relative test-error bound between training and testing error. Hence, we observed that with AdaBoost generalizes well and that we could be more certain to have a lower testing error bound with AdaBoost. Thus, we selected AdaBoost as our best model to accurately predict edibility of mushrooms.
 
     % Appendices
     % Appendix A
@@ -826,7 +823,7 @@ def encode(df):
         % of $k$ and save the results.
         \item greedySubset.py - Conduct Greedy Subset Selection.
         \item featureSelection.py - Graph the results for Greedy Subset Selection.
-        \item hyperparameterTuning.py - Tunes hyperparams for a model.
+        \item hyperparameterTuning.py - Tunes hyperparameters for a model.
         \item hypothesisTest.py - Conducts hypothesis testing.
         \item rocCurve.py - Plots the ROC Curve for a model.
         \item models.py - Contains all models used and their hyperparameters.
