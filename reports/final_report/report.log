@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  30 NOV 2018 18:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  1 DEC 2018 21:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -929,26 +929,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 246--252
 
  []
 
-[3] <./img/46.png, id=185, 1768.6075pt x 837.1275pt>
+[3] <./img/46.png, id=201, 964.8045pt x 395.3169pt>
 File: ./img/46.png Graphic file (type png)
  <use ./img/46.png>
-Package pdftex.def Info: ./img/46.png used on input line 268.
-(pdftex.def)             Requested size: 477.53041pt x 226.02744pt.
+Package pdftex.def Info: ./img/46.png used on input line 277.
+(pdftex.def)             Requested size: 482.40106pt x 197.65796pt.
 
-Overfull \hbox (7.77539pt too wide) in paragraph at lines 268--272
+Overfull \hbox (12.64604pt too wide) in paragraph at lines 277--281
  [] 
  []
 
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 293.
+Underfull \hbox (badness 10000) in paragraph at lines 283--291
+
+ []
 
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 293.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 294--299
+Underfull \hbox (badness 10000) in paragraph at lines 292--297
 
  []
 
@@ -956,114 +953,129 @@ Underfull \hbox (badness 10000) in paragraph at lines 294--299
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.306 
-       <./img/46.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 310--314
+l.302     \begin{python}
+                         <./img/46.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 317--322
+
+ []
+
+<./img/tvt.png, id=215, 442.65375pt x 221.82875pt>
+File: ./img/tvt.png Graphic file (type png)
+ <use ./img/tvt.png>
+Package pdftex.def Info: ./img/tvt.png used on input line 342.
+(pdftex.def)             Requested size: 177.05835pt x 88.72992pt.
+ [5pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.358 
+       <./img/tvt.png>]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 359.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 359.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 361--364
 
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 375--379
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 426--429
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 430--435
+
+ []
+
+[7]
+
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 350.
+(hyperref)                removing `math shift' on input line 485.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 350.
+(hyperref)                removing `math shift' on input line 485.
 
-<./img/model_accuracy_vs_folds_Perceptron.png, id=199, 489.9906pt x 384.4764pt>
-File: ./img/model_accuracy_vs_folds_Perceptron.png Graphic file (type png)
- <use ./img/model_accuracy_vs_folds_Perceptron.png>
-Package pdftex.def Info: ./img/model_accuracy_vs_folds_Perceptron.png used on input line 353.
-(pdftex.def)             Requested size: 171.49927pt x 134.56874pt.
- [5] <./img/model_accuracy_vs_folds_SVM-linear.png, id=232, 489.9906pt x 384.4764pt>
+<./img/model_accuracy_vs_folds_SVM-linear.png, id=305, 489.9906pt x 393.8715pt>
 File: ./img/model_accuracy_vs_folds_SVM-linear.png Graphic file (type png)
  <use ./img/model_accuracy_vs_folds_SVM-linear.png>
-Package pdftex.def Info: ./img/model_accuracy_vs_folds_SVM-linear.png used on input line 369.
-(pdftex.def)             Requested size: 146.9983pt x 115.3438pt.
- <./img/model_accuracy_vs_folds_SVM-poly.png, id=233, 489.9906pt x 384.4764pt>
+Package pdftex.def Info: ./img/model_accuracy_vs_folds_SVM-linear.png used on input line 492.
+(pdftex.def)             Requested size: 146.9983pt x 118.16235pt.
+ <./img/model_accuracy_vs_folds_SVM-poly.png, id=306, 489.9906pt x 393.8715pt>
 File: ./img/model_accuracy_vs_folds_SVM-poly.png Graphic file (type png)
  <use ./img/model_accuracy_vs_folds_SVM-poly.png>
-Package pdftex.def Info: ./img/model_accuracy_vs_folds_SVM-poly.png used on input line 370.
-(pdftex.def)             Requested size: 146.9983pt x 115.3438pt.
- <./img/model_accuracy_vs_folds_SVM-rbf.png, id=234, 489.9906pt x 384.4764pt>
+Package pdftex.def Info: ./img/model_accuracy_vs_folds_SVM-poly.png used on input line 493.
+(pdftex.def)             Requested size: 146.9983pt x 118.16235pt.
+ <./img/model_accuracy_vs_folds_SVM-rbf.png, id=307, 489.9906pt x 393.8715pt>
 File: ./img/model_accuracy_vs_folds_SVM-rbf.png Graphic file (type png)
  <use ./img/model_accuracy_vs_folds_SVM-rbf.png>
-Package pdftex.def Info: ./img/model_accuracy_vs_folds_SVM-rbf.png used on input line 371.
-(pdftex.def)             Requested size: 146.9983pt x 115.3438pt.
- [6pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.388         Time:
-                    36.912spdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.388         Time:
-                    36.912s <./img/model_accuracy_vs_folds_Perceptron.png> <./img/model_accuracy_vs_folds_SVM-linear.png> <./img/model_accuracy_vs_folds_SVM-poly.png> <./img/model_accuracy_vs_folds_SVM-rbf.png>] <./img/model_accuracy_vs_folds_LR.png, id=259, 489.9906pt x 384.4764pt>
+Package pdftex.def Info: ./img/model_accuracy_vs_folds_SVM-rbf.png used on input line 494.
+(pdftex.def)             Requested size: 146.9983pt x 118.16235pt.
+ <./img/model_accuracy_vs_folds_LR.png, id=308, 489.9906pt x 393.8715pt>
 File: ./img/model_accuracy_vs_folds_LR.png Graphic file (type png)
  <use ./img/model_accuracy_vs_folds_LR.png>
-Package pdftex.def Info: ./img/model_accuracy_vs_folds_LR.png used on input line 398.
-(pdftex.def)             Requested size: 171.49927pt x 134.56874pt.
- <./img/model_accuracy_vs_folds_Adaboost-n_estimators10.png, id=260, 489.9906pt x 384.4764pt>
-File: ./img/model_accuracy_vs_folds_Adaboost-n_estimators10.png Graphic file (type png)
- <use ./img/model_accuracy_vs_folds_Adaboost-n_estimators10.png>
-Package pdftex.def Info: ./img/model_accuracy_vs_folds_Adaboost-n_estimators10.png used on input line 414.
-(pdftex.def)             Requested size: 146.9983pt x 115.3438pt.
- <./img/model_accuracy_vs_folds_Adaboost-n_estimators50.png, id=261, 489.9906pt x 384.4764pt>
-File: ./img/model_accuracy_vs_folds_Adaboost-n_estimators50.png Graphic file (type png)
- <use ./img/model_accuracy_vs_folds_Adaboost-n_estimators50.png>
-Package pdftex.def Info: ./img/model_accuracy_vs_folds_Adaboost-n_estimators50.png used on input line 415.
-(pdftex.def)             Requested size: 146.9983pt x 115.3438pt.
- [7pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
+Package pdftex.def Info: ./img/model_accuracy_vs_folds_LR.png used on input line 497.
+(pdftex.def)             Requested size: 146.9983pt x 118.16235pt.
+ <./img/model_accuracy_vs_folds_Adaboost.png, id=309, 546.3612pt x 393.8715pt>
+File: ./img/model_accuracy_vs_folds_Adaboost.png Graphic file (type png)
+ <use ./img/model_accuracy_vs_folds_Adaboost.png>
+Package pdftex.def Info: ./img/model_accuracy_vs_folds_Adaboost.png used on input line 498.
+(pdftex.def)             Requested size: 163.90962pt x 118.16235pt.
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.425         5-f
-                 old: (mu=0.959, sigma=0.031)pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.425         5-f
-                 old: (mu=0.959, sigma=0.031) <./img/model_accuracy_vs_folds_LR.png> <./img/model_accuracy_vs_folds_Adaboost-n_estimators10.png> <./img/model_accuracy_vs_folds_Adaboost-n_estimators50.png>] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 439--440
+Underfull \hbox (badness 10000) in paragraph at lines 501--503
 
  []
 
 
-Overfull \hbox (4.37758pt too wide) in paragraph at lines 464--475
+Underfull \hbox (badness 10000) in paragraph at lines 512--516
+
+ []
+
+[8 <./img/model_accuracy_vs_folds_SVM-linear.png> <./img/model_accuracy_vs_folds_SVM-poly.png> <./img/model_accuracy_vs_folds_SVM-rbf.png> <./img/model_accuracy_vs_folds_LR.png> <./img/model_accuracy_vs_folds_Adaboost.png>] [9] [10]
+Underfull \hbox (badness 10000) in paragraph at lines 574--575
+
+ []
+
+
+Overfull \hbox (4.37758pt too wide) in paragraph at lines 599--610
 []\OT1/cmr/bx/n/10 cap-color\OT1/cmr/m/n/10 : brown=n, buff=b, cin-na-mon=c, gray=g, green=r, pink=p, pur-ple=u, red=e, white=w,
  []
 
-[9]
-Overfull \hbox (2.74406pt too wide) in paragraph at lines 643--644
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-[10] [11]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 678.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 678.
+[11] [12]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 758.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 758.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 678.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 678.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 758.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 758.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 79AE79682260979FEFF0E58FBD802EFE;1367.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 678.
+(rerunfilecheck)             Checksum: 612A15D74D26A69B9B70EE460597406C;1581.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 758.
  ) 
 Here is how much of TeX's memory you used:
- 19882 strings out of 493014
- 358654 string characters out of 6133351
- 452900 words of memory out of 5000000
- 22836 multiletter control sequences out of 15000+600000
+ 19830 strings out of 493014
+ 357450 string characters out of 6133351
+ 447902 words of memory out of 5000000
+ 22811 multiletter control sequences out of 15000+600000
  14050 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,12n,54p,413b,1864s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on report.pdf (11 pages, 383803 bytes).
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on report.pdf (12 pages, 381914 bytes).
 PDF statistics:
- 491 PDF objects out of 1000 (max. 8388607)
- 442 compressed objects within 5 object streams
- 248 named destinations out of 1000 (max. 500000)
- 205 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 493 PDF objects out of 1000 (max. 8388607)
+ 441 compressed objects within 5 object streams
+ 222 named destinations out of 1000 (max. 500000)
+ 232 words of extra memory for PDF output out of 10000 (max. 10000000)
 

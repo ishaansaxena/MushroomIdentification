@@ -229,7 +229,7 @@ def encode(df):
             $ P^* \in\mathcal{P} $ via hyperparameter tuning. Note that the hyperparameter
             tuning process trains a model on $ Z $ with each possible parameter and evaluates
             performance on $ Z'_1 $.
-            \item Use k-fold Cross Validation on testing set $ Z'_2 $ to get mean accuracy
+            \item Use $k$-fold Cross Validation on testing set $ Z'_2 $ to get mean accuracy
             and standard deviations for each model $ M \in \mathcal{M} $ with it's
             optimal hyperparameters $ P^* \in\mathcal{P} $.
             \item Compare models with hypothesis testing and choose best model.
@@ -256,48 +256,113 @@ def encode(df):
 
     % 3.2
     \subsection{Feature Selection Technique}
-    We are using Greedy Subset Selection for Feature Selection. We will talk more about
-    the selection technique and its implementation in the final report.
+    We are using Greedy Subset Selection for Feature Selection. Greedy Subset Selection is
+    a greedy algorithm for selecting a good subset of feature coordinates. Greedy selection
+    chooses optimum features by minimizing the mean squared error. After selecting a subset
+    of features, it tries to add features based on whichever feature works best with the
+    current subset.
+
+        $$ S = S \cup \left[\text{argmin}_{j\notin S} \text{min}_{\theta_{S\cup j}}\left(\frac{1}{2}
+        \sum_{t=1}^n (y_t-\theta_{S\cup j}\cdot\phi_{S\cup j}(x_t))^2\right)\right] $$
+
+    \noindent
+    GSS is computationally faster than Subset Selection. It is also more optimal
+    in comparison to Foward-Fitting and Myopic Forward Fitting algorithms.
 
     % 3.3
     \subsection{Greedy Subset Selection Results}
     The following are the 46 best features and their weights obtained from Greedy Subset
     Selection:
-
     \begin{center}
-        \includegraphics[scale=0.27]{46.png}
+        \includegraphics[scale=0.5]{46.png}
         \begin{figure}[!h]
-            \caption{Greedy Subset Selection - 46 features with highest weights.}
+            \caption{Greedy Subset Selection - 46 features with highest weights. Obtained from featureSelectionPlot.py}
         \end{figure}
     \end{center}
 
+    Our processed data-set contains 8124 samples and 107 features. Hence, the need for
+    reduction of features arises from the size of the dataset, specifically, the large
+    number of features our models need to learn from and the fact that certain features
+    have a high correlations making addition of all features redundant. Further, a lot of
+    the features have little or no correlation with the class label and
+    adding such features just plainly increases our computation time without actually
+    helping our model make ‘better’ decisions (in some cases, they even increase noise and
+    make the model's decisions worse).\\
 
-    We will talk more about reduction of features, how that impacts our problem,
-    and about what these specific features are in the final report.
+    Thus, reduction of features increases the efficiency
+    of training our models, helps us remove redundant features from our data set and
+    learn only from features which have a considerable impact on our class labels.
+    Reduction of features also helps in a control over complexity of some models, as it
+    helps with better generalizability.\\
+
+    The best feature, as can be seen in the graph above is Feature 96, namely,
+    bruises-f. This is a boolean encoded feature, which is 1 if the mushroom does not have
+    any bruises, and 0 if the mushroom has bruises. Now, let's have a look at the following
+    code to understand why this is:
+    \begin{python}
+    >>> import data
+    >>> X, _, y, _ = data.get_reduced_data(0.6, 1)
+    >>> n = X.values.size
+    >>>  np.sum((X.values.resize(n, ) == y))
+    0
+    \end{python}
+    This indicates that in the training set $ Z = (X, y) $, on which feature selection has
+    been performed, every mushroom with bruises is a poisonous mushroom (since a sum of
+    zero indicates that for each instance of $ X $, the class label $ y\in\{0, 1\} $ was
+    not equal to the value of $ X\in\{0, 1\} $). As such, this feature seems to be a very
+    good identifier of the edibility of mushrooms.
 
     % 4
-    \section{Machine Learning Models}
-
-    In order to solve the classification problem,
-    % with a reduced number of features,
-    we will test the following machine learning algorithms with $ \{2, 5, 10\} $-Fold Cross
-    Validation and different metrics, including Hypothesis Testing, ROC Curves, etc.
-    to compare the results:
-    \begin{enumerate}
-        \item Perceptron
-        \item Support Vector Machine
-        \item Logistic Regression
-        \item Adaboost
-    \end{enumerate}
-
-    \subsection{Cross-Validation Technique: $k$-Fold CV}
+    \section{Cross Validation}
     We use cross-validation to evaluate the chosen predictive model by paritioning it into
     smaller train and test datasets wherein we train the model on the training set and
     evaluate it on the testing set. By using better cross-validation techniques, we can
     get a better understanding of how well our model will generalize, and whether we might
     be over or underfitting.\\
 
-    Here, we are using $k$-Fold Cross Validation on 2, 5, and 10 folds. In $k$-Fold CV, we
+    In order to conduct cross validation for (i) tuning of hyperparameters
+    \footnote{See Section 5} and (ii) evaluation of model performance \footnote{See Section 6},
+    we use a form of nested cross validation as explained previously in our pipeline. We
+    use a combination of $k$-Fold CV and Train-Validate-Test to make sure that any of the
+    data used in either of the two evaluation sets has not been exposed to the models
+    which are being tuned and evaluated before.
+
+    \subsection{Basic Methodology}
+    Given the original encoded dataset $ \mathcal{D} $, we create a 40:20:40 split,
+    namely $ D, D'_1, D'_2 $. We conduct our feature selection process as descibed in the
+    previous section on $ D $ to obtain a reduced subset of features $ \mathcal{F} $.
+    This reduced subset of features is used to obtain $ Z, Z'_1, Z'_2 $, which are used
+    as a train-validate-test sets respectively. Each model is initially trained with
+    different hyperparameters on $ Z $, and evaluated on $ Z'_1 $ to get the best set of
+    hyperparameters. Further, we conduct $k$-Fold CV on $ Z'_2 $ by used the optimal set of
+    hyperparameters which we get from the previous step to evaluate the performance of a
+    selected model on unseen data.
+
+    \begin{center}
+        \includegraphics[scale=0.4]{tvt.png}
+        \begin{figure}[!h]
+            \caption{Cross Validation Model}
+        \end{figure}
+    \end{center}
+
+    \subsection{Train-Validate-Test}
+    We obtain the $ Z, Z' $ 40:60 split in the data.py file when creating a dataset
+    with a reduced number of features. After doing so, we further split $ Z' $ into
+    $ Z'_1, Z'_2 $ such that $ |Z| \approx 3200, |Z'_1| \approx 1600, |Z'_2| \approx 3200 $.
+    Note that \underline{all splits are random}, and as a result, differing
+    results may be obtain for different splits of the data.\footnote{As we'll see however,
+    even with different splits, we get multiple models which consistently performs with
+    over 98\% accuracy on the 5-Fold CV on $ Z'_2 $. We will use vc-Dimensions of these
+    models along with results from hypothesis testing (Section 7) to compare these models
+    further.}
+
+    \subsection{$k$-Fold CV}
+
+    Here, we are using $k$-Fold Cross Validation on 2, 5, and 10 folds. While we conduct
+    $k$-Fold Cross Validation in all of these fold sizes, we will only compare models based on
+    their performances in 5-folds.\\
+
+    In $k$-Fold CV, we
     split the dataset into $k$ different folds. For each $i^{th}$ fold, where
     $ i = 1, 2,...,k $, we train on the remaining $ k-1 $ folds and evaluate on the single
     remaining fold. As a result, we get $ k $ different measures of the metrics which we
@@ -344,93 +409,163 @@ def encode(df):
     \end{python}
 
     \noindent
-    To see how this we utilize this script to get results for specific models, please see
-    Appendix B.
+
+    % 5
+    \section{Hyperparameter Tuning}
+    Before we conduct any evaluations on a model, we obtain the optimal hyperparameters for
+    the model such that we can compare different models based on each of their tuned
+    hyperparameters. To do this, we utilize Grid Search. For instance, consider the following
+    set of possible hyperparameters for Adaboost:
+    \begin{python}
+    {
+        'n_estimators': [3, 5, 10, 20, 50],
+        'learning_rate': [0.1, 0.5, 1],
+        'algorithm': ['SAMME', 'SAMME.R']
+    }
+    \end{python}
+    This python dictionary (which can be found in models.py for each model we use) is used
+    to represent a set of possible values for each of the $ h $ different hyperparameters
+    we want to tune. \\
+
+    The key represents the hyperparameters and the value represents the
+    different values of the hyperparameters which we wish to check our models performance
+    on. As such, we create a 'grid' of dimension $ h $ all possible combinations of the
+    hyperparameters, and search through the grid to see which combination of hyperparams
+    gives us the best result when the model is trained on $ Z $ and evaluated on $ Z'_1 $.\\
+
+    The following method returns the best set of parameters given a model, and its possible
+    params (in kwargs) by training the model on $ Z $ and evaluating performance on $ Z'_1 $.
+    \footnote{This method can be found in hyperparameterTuning.py.}
+    \begin{python}
+    # For all combinations of hyperparams;
+    # lists contains all possible values of hyperparams
+    for el in itertools.product(*lists):
+
+        # Create current set of test params
+        test = {}
+        for i in range(len(el)):
+            test[keys[i]] = el[i]
+
+        # Train the model on Z
+        m = model(**test)
+        m.fit(X_train, y_train)
+
+        # Evaluate the model on Z'_1
+        y_pred = m.predict(X_test)
+        acc = metrics.accuracy_score(y_test, y_pred)
+
+        # Update max_accuracy and best_params
+        if (acc > max_accuracy):
+            max_accuracy = acc
+            best_params = test
+
+    # Return the best set of params
+    return best_params
+    \end{python}
+
+    % 6
+    \section{Model Evaluations}
+    In order to solve the classification problem, with a reduced number of features,
+    we will test the following machine learning algorithms with $ \{2, 5, 10\} $-Fold Cross
+    Validation and different metrics, including Hypothesis Testing, ROC Curves, etc.
+    to compare the results:
+    \begin{enumerate}
+        \item Support Vector Machine
+        \begin{enumerate}
+            \item Linear Kernel
+            \item Polynomial Kernel
+            \item RBF Kernel
+        \end{enumerate}
+        \item Logistic Regression
+        \item Adaboost
+    \end{enumerate}
+    We conduct hyperparameter tuning and run 2,5,10-fold CV for each of these models as
+    in modelSelection.py.
 
     \subsection{Model $k$-Fold CV Results}
-    \subsubsection{Perceptron}
-    \begin{center}
-        \includegraphics[scale=0.35]{model_accuracy_vs_folds_Perceptron.png}
-        \begin{figure}[!h]
-            \caption{Perceptron accuracy in 2,3,5-Fold CV}
-        \end{figure}
-    \end{center}
-    We get the following results for a Perceptron when we run kfoldcv\_graph.py:
-    \begin{lstlisting}
-    Model: Perceptron
-        2-fold: (mu=0.853, sigma=0.054)
-        5-fold: (mu=0.994, sigma=0.008)
-        10-fold: (mu=1.000, sigma=0.001)
-        Time: 9.351s
-    \end{lstlisting}
 
-    \subsubsection{SVM}
+    The following graphs are the graphs for number of folds (2, 5, 10) vs accuracy for
+    the tuned hyperparameters of each of the models as generated by modelSelection.py. Note
+    that the title contains the dictionary which represents the optimal hyperparameters.
+
     \begin{center}
         \includegraphics[scale=0.3]{model_accuracy_vs_folds_SVM-linear.png}
         \includegraphics[scale=0.3]{model_accuracy_vs_folds_SVM-poly.png}
         \includegraphics[scale=0.3]{model_accuracy_vs_folds_SVM-rbf.png}
-        \begin{figure}[!h]
-            \caption{SVM accuracy in 2,3,5-Fold CV. From left to right, we are using
-            linear, polynominal, and rbf kernels.}
-        \end{figure}
     \end{center}
-    We get the following results for SVMs when we run kfoldcv\_graph.py:
-    \begin{lstlisting}
-    Model: SVM-linear
-        2-fold: (mu=0.884, sigma=0.087)
-        5-fold: (mu=1.000, sigma=0.000)
-        10-fold: (mu=1.000, sigma=0.000)
-        Time: 5.442s
-    Model: SVM-poly
-        2-fold: (mu=0.707, sigma=0.184)
-        5-fold: (mu=0.913, sigma=0.073)
-        10-fold: (mu=0.953, sigma=0.043)
-        Time: 36.912s
-    Model: SVM-rbf
-        2-fold: (mu=0.741, sigma=0.059)
-        5-fold: (mu=0.973, sigma=0.024)
-        10-fold: (mu=0.996, sigma=0.010)
-        Time: 13.458s
-    \end{lstlisting}
-
-    \subsubsection{Logistic Regression}
     \begin{center}
-        \includegraphics[scale=0.35]{model_accuracy_vs_folds_LR.png}
-        \begin{figure}[!h]
-            \caption{Logistic Regression accuracy in 2,3,5-Fold CV.}
-        \end{figure}
+        \includegraphics[scale=0.3]{model_accuracy_vs_folds_LR.png}
+        \includegraphics[scale=0.3]{model_accuracy_vs_folds_Adaboost.png}
     \end{center}
-    We get the following results for Logistic Regression when we run kfoldcv\_graph.py:
-    \begin{lstlisting}
-    Model: LR
-        2-fold: (mu=0.832, sigma=0.029)
-        5-fold: (mu=0.986, sigma=0.014)
-        10-fold: (mu=0.999, sigma=0.002)
-        Time: 0.754s
-    \end{lstlisting}
 
-    \subsubsection{Adaboost}
+    The following table contains the mean and standard deviations of 5-fold CV for each of
+    the models on this instance of running modelSelection.py.\\
     \begin{center}
-        \includegraphics[scale=0.3]{model_accuracy_vs_folds_Adaboost-n_estimators10.png}
-        \includegraphics[scale=0.3]{model_accuracy_vs_folds_Adaboost-n_estimators50.png}
-        \begin{figure}[!h]
-            \caption{Adaboost accuracy in 2,3,5-Fold CV. From left to right, we have 10
-            and 50 n\_estimators}
-        \end{figure}
+        \begin{tabular}{llllll}
+        Models   & Adaboost & Logistic Regression & SVM-Linear & SVM-RBF & SVM-Polynomial \\
+        $\mu$    & 0.99937  & 0.99937             & 0.99906    & 0.99222 & 0.00840        \\
+        $\sigma$ & 0.00076  & 0.00076             & 0.00076    & 0.96395 & 0.00711
+        \end{tabular}
     \end{center}
-    We get the following results for Adaboost when we run kfoldcv\_graph.py:
+
+    \subsection{A Note Variability of Results}
+    Recall that, as we mentioned in Section 4.2 and in Footnote 8, we are splitting the
+    data into the three dataset we use for training and evaluation randomly. As such, the
+    results obtained on different instances may be different. Furthermore, the tuned
+    hyperparameters might be different as well.\\
+
+    However, we obtain very good results when performing 2,5,10-fold cross-validation using the
+    tuned SVM-linear, Logistic Regression, and Adaboost models consistently (more than 98\%
+    accuracy  each time). As a result, we must employ other techniques such as statistical
+    hypothesis testing and comparison of VC-Dimensions of these models to determine which
+    model best fits our problem. We have done so in section 7. Regardless, we have presented
+    the results for one such split of $ Z, Z'_1, Z'_2 $.
+
+    % 7
+    \section{Model Comparison}
+    To compare the performance of different models based on the 5-fold cross validation on
+    $ Z'_2 $, we can conduct hypothesis testing on their results. The purpose of hypothesis
+    testing is to make a decision in the face of uncertainty. We used hypothesis testing
+    to understand which model would be better to predict the edibility of the Mushrooms
+    based on the data. Since none of our models are “perfect” we used hypothesis testing
+    to understand which algorithm is more likely to perform better.
+
+    \subsection{Hypothesis Testing}
+    We used t-distribution because we don’t know the population standard deviation; we did
+    not use all the mushroom data to train our algorithm. We ran $k$-fold cross validation
+    for the different algorithms and compared them pairwise with t-distribution. We
+    calculated the mean and standard deviation of the errors obtained from each of the
+    $k$-folds. Let's call these mean errors $ \mu_1, \sigma_1 $ be the mean error and standard
+    deviation of the first model and $ \mu_2, \sigma_2 $ be the mean error and standard
+    deviation of the second model. We can conduct hypothesis testing as follows:
+    \begin{enumerate}
+        \item Null hypothesis: $ \mu_1= \mu_2 $
+        \item Calculating test parameters:
+            $$ x = \frac{(\mu_1-\mu_2)\sqrt{n}}{\sqrt{\sigma_1^2 + \sigma_2^2}} $$
+        \item Calculating degrees of freedom:
+            $$ \nu = \left\lceil \frac{(\sigma_1^2 + \sigma_2^2)^2 (n-1)}{\sigma_1^4 + \sigma_2^4} \right\rceil $$
+        \item Reject null hypothesis in favor of first algorithm if
+            $$ x > x_{1-\alpha, \nu} $$
+            where $ \alpha $ is the level of significance (Note that we chose $ \alpha = 0.01 $).
+    \end{enumerate}
+    We conduct hypothesis test for the model with the best average performance against all
+    the other models at the end of modelSelection.py using the t-test in hypothesisTest.py.
+    The following are the results for one instance of running modelSelection.py (the same
+    as the one for which results have been provided in section 6.1):
     \begin{lstlisting}
-    Model: Adaboost-n_estimators 10
-        2-fold: (mu=0.796, sigma=0.007)
-        5-fold: (mu=0.959, sigma=0.031)
-        10-fold: (mu=0.975, sigma=0.035)
-        Time: 1.437s
-    Model: Adaboost-n_estimators 50
-        2-fold: (mu=0.802, sigma=0.001)
-        5-fold: (mu=1.000, sigma=0.000)
-        10-fold: (mu=1.000, sigma=0.000)
-        Time: 6.402s
+    Adaboost > LR: False
+    Adaboost > SVM-linear: False
+    Adaboost > SVM-rbf: False
+    Adaboost > SVM-poly: True
     \end{lstlisting}
+    As we can see on various instances, it is not clear even from hypothesis testing whether
+    SVM-linear, Adaboost, or LogisticRegression are better suited to our problem. As a result,
+    we must use some other way to compare how these models will
+
+    \subsection{VC Dimensions and Generalizability}
+    The Vapnik - Chervonenkis dimension of each model is given by:
+        $$ d_{vc} = \max_n\{\} $$
+
 
     % Appendices
     % Appendix A
@@ -607,62 +742,7 @@ def encode(df):
 
     % Appendix B
     \newpage
-    \section*{\underline{Appendix B: k-Fold CV Graphs}}
-
-    The following code an excerpt from the file kfoldcv\_graph.py. This file uses the
-    kfoldcv.py module to get metrics for multiple machine learning models and saves plots
-    of accuracy vs number of folds for each of the models.
-
-    \begin{python}
-# Import models. For example:
-from sklearn.svm import SVC
-
-models = []
-# Add models to list. For example:
-models.append(("SVM-linear", SVC, {'kernel':'linear'}))
-models.append(("SVM-poly", SVC, {'kernel':'poly'}))
-
-# For each algorithm
-for name, model, kwargs in models:
-    # Folds
-    folds = [2, 5, 10]
-    # Mean accuracy and std dev
-    m = []
-    s = []
-    # For each fold size
-    for fold_size in folds:
-        Z = kfoldcv.run(X, y, model, fold_size, **kwargs)
-        m.append(np.mean(Z))
-        s.append(np.std(Z))
-    # Plot accuracy vs. fold size
-    df = pd.DataFrame({
-        'mean_accuracy': m,
-        'std_dev': s
-    }, index = folds)
-    lines = df.plot.line()
-    filename = project.results + "model_accuracy_vs_folds_" + name + ".png"
-    plt.savefig(filename, bbox_inches='tight')
-    \end{python}
-    \noindent
-    This is how the output looks when this script is run:
-    \begin{lstlisting}
-    Model:	SVM-linear
-        2-fold: (mu=0.884, sigma=0.087)
-        5-fold: (mu=1.000, sigma=0.000)
-        10-fold: (mu=1.000, sigma=0.000)
-        Time: 4.987s
-    Model:	SVM-poly
-        2-fold: (mu=0.707, sigma=0.184)
-        5-fold: (mu=0.913, sigma=0.073)
-        10-fold: (mu=0.953, sigma=0.043)
-        Time: 33.005s
-    \end{lstlisting}
-    \noindent
-    This file also saves graphs like in section 3 for different models.
-
-    % Appendix B
-    \newpage
-    \section*{\underline{Appendix C: List of Scripts}}
+    \section*{\underline{Appendix B: List of Scripts}}
     The following scripts have been included with the preliminary report in the zip file:
     \begin{enumerate}
         \item data.py - Interface to load encoded data.
