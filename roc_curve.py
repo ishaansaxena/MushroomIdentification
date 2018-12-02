@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import time
 import numpy as np
 import pandas as pd
-import scikitplot as skplt
+# import scikitplot as skplt
 
 import data
 import project
@@ -53,4 +53,6 @@ if __name__ == '__main__':
     plt.axis('tight')
     plt.ylabel('True Positive Rate')
     plt.xlabel('False Positive Rate')
+    plt.xlim(1, 0)
+    plt.ylim(0, 1.001)
     plt.show()

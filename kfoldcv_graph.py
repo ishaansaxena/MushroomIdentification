@@ -12,10 +12,7 @@ import metrics
 if __name__ == '__main__':
 
     # Load (X, y) dataset
-    X, X_, y, y_ = data.get_reduced_data()
-
-    # Get X as a numpy matrix
-    X = X.values
+    X, X_, y, y_ = data.get_reduced_data(test_size=0.6)
 
     # Import models
     # from xgboost import XGBClassifier
@@ -26,10 +23,8 @@ if __name__ == '__main__':
 
     models = []
 
-    models.append(("Perceptron", Perceptron, {'max_iter':80}))
-    models.append(("Adaboost-n_estimators 3", AdaBoostClassifier, {'n_estimators':3}))
-    models.append(("Adaboost-n_estimators 5", AdaBoostClassifier, {'n_estimators':5}))
-    models.append(("Adaboost-n_estimators 10", AdaBoostClassifier, {'n_estimators':10}))
+    models.append(("Adaboost-n_estimators_10", AdaBoostClassifier, {'n_estimators':10}))
+    models.append(("Adaboost-n_estimators_20", AdaBoostClassifier, {'n_estimators':20}))
     models.append(("SVM-linear", SVC, {'kernel':'linear'}))
     models.append(("SVM-poly", SVC, {'kernel':'poly'}))
     models.append(("SVM-rbf", SVC, {'kernel':'rbf'}))
@@ -62,7 +57,9 @@ if __name__ == '__main__':
         }, index = folds)
 
         lines = df.plot.line()
-        filename = "reports/preliminary_report/img/" + "model_accuracy_vs_folds_" + name + ".png"
+        filename = "results/" + "model_accuracy_vs_folds_" + name + ".png"
+        plt.title(name)
+        plt.ylim(0.8,1.0001)
         plt.savefig(filename, bbox_inches='tight')
 
         print ("\tTime: %.3fs" % (time.time() - start))
