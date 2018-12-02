@@ -3,6 +3,9 @@ from sklearn import metrics as metrics
 import numpy as np
 
 def run(X, y, model, k, verbose=False, *args, **kwargs):
+    # Get X as a numpy matrix
+    X = X.values
+
     # Get n (samples) and d (dimensions)
     (n, d) = X.shape
 
