@@ -508,6 +508,30 @@ def encode(df):
         \end{tabular}
     \end{center}
 
+    \subsection{ROC Curves}
+    ROC is metric to evaluate classifier output quality. ROC is a plot of signal (True
+    Positive Rate) against noise (False Positive Rate). The model performance is
+    determined by looking at the area under the ROC curve (or AUC).\\
+
+    ROC curves typically have the and false positive rate on the X axis and true positive
+    rate on the Y axis. The top left corner of the plot is the “ideal” point - a false
+    positive rate of zero, and a true positive rate of one. The “steepness” of ROC curves
+    is also important, since it is ideal to maximize the true positive rate while
+    minimizing the false positive rate. An ideal model would have AUC = 1.0, since it would
+    mean that the false positive rate is zero for all observations. Here are the ROC
+    Curves generated from the tuned hyperparameters for each model:
+
+    \begin{center}
+        \includegraphics[scale=0.2]{roc_SVM-Linear.png}
+        \includegraphics[scale=0.2]{roc_SVM-Poly.png}
+        \includegraphics[scale=0.2]{roc_SVM-RBF.png}
+    \end{center}
+    \begin{center}
+        \includegraphics[scale=0.2]{roc_LR.png}
+        \includegraphics[scale=0.2]{roc_Adaboost.png}
+    \end{center}
+
+
     \subsection{A Note Variability of Results}
     Recall that, as we mentioned in Section 4.2 and in Footnote 8, we are splitting the
     data into the three dataset we use for training and evaluation randomly. As such, the
@@ -564,8 +588,58 @@ def encode(df):
 
     \subsection{VC Dimensions and Generalizability}
     The Vapnik - Chervonenkis dimension of each model is given by:
-        $$ d_{vc} = \max_n\{\} $$
+        $$ d_{vc} = \max_n\{n: N_F(n)=2^n\} $$
+    where $ N_F $ is the growth function.\\
 
+    For our mushroom classification problem, we have tried multiple models and each of
+    models display different characteristics for different train-test data splits and have
+    differing accuracies and standard deviations. However, since each of them consistently
+    have a performance of more than 98\% accuracy, and since hypothesis testing is
+    inconclusive, we can use VC-dimensions for each of these models to get a theoretical
+    upper bound on the test errors for each of the models. As such, the model with the best
+    theoretical lower bound would be most suited to out problem.\\
+
+    \begin{center}
+        \includegraphics[scale=0.75]{vc.png}
+    \end{center}
+
+    The relation between the test error $ R(f) $, training error $ R_n(f) $ and VC-dimension
+    is given by the following equation:
+        $$ R(f) \leq R_n(f) + \sqrt{\frac{\log N_F(2n) + \log (4/\delta)}{n}} $$
+    where it is true for $ N_F $ given that the number of samples $ n \geq d_{vc}$ (which, in
+    our case it is) that:
+        $$ \log N_F(2n) \leq d_{vc} \left(1+\log\frac{2n}{d_{vc}}\right) $$
+    As a result, a model with lower vc-dimension would have an increased generalizability
+    as it would result in a smaller upper bound for $ R_f $. The following are the
+    VC-dimensions for all the models we use (where $ d $ = number of features,
+    $ m $ = number of decision stumps):
+
+    \begin{multicols}{2}
+        \begin{enumerate}
+            \item SVM Linear: $ d_{vc} = d + 1 $
+            \item SVM RBF: $ d_{vc} = \infty $
+            \item Logistic Regression: $ d_{vc} = d + 1 $
+            \item Adaboost: $ d_{vc} \geq m/2 $
+        \end{enumerate}
+    \end{multicols}
+
+    Since we are using $d=50$ features, we are using at most $20$ decision stumps for Adaboost,
+    we know that Adaboost has a lower vc-Dimension than any of the other models we are using
+    and would, as a result, have the lowest upper bound for the test error.
+
+    % 8
+    \section{Conclusion}
+    After doing hypothesis testing we concluded that Adaboost, SVM linear and logistic
+    regression perform equally well; when we compared each of them, we did not reject the
+    null hypothesis (mean accuracy are equal). So, to choose the best out of these three
+    we calculated the VC Dimension of each of these algorithms. As mentioned before,
+    Adaboost has the lowest VC-Dimension out of these three models and thus has the lowest
+    relative test-error bound. A lower test-error bound means that, theoretically, there
+    is lesser gap between training error and testing error. Hence, with Adaboost we can be
+    more certain about the testing error. Using feature selection in our algorithm
+    discarded all the “noise” features and improved generalization. Exploring the data,
+    helped us understand the correlations between the features and between a feature and
+    the class label.
 
     % Appendices
     % Appendix A
@@ -748,10 +822,17 @@ def encode(df):
         \item data.py - Interface to load encoded data.
         \item project.py - Contains project config.
         \item kfoldcv.py - Conduct kfoldcv.
-        \item kfoldcv\_graph.py - Conduct kfoldcv for multiple models and multiple values
-        of $k$ and save the results.
+        % \item kfoldcv\_graph.py - Conduct kfoldcv for multiple models and multiple values
+        % of $k$ and save the results.
         \item greedySubset.py - Conduct Greedy Subset Selection.
         \item featureSelection.py - Graph the results for Greedy Subset Selection.
+        \item hyperparameterTuning.py - Tunes hyperparams for a model.
+        \item hypothesisTest.py - Conducts hypothesis testing.
+        \item rocCurve.py - Plots the ROC Curve for a model.
+        \item models.py - Contains all models used and their hyperparameters.
+        \item modelSelection.py - Main driver file. Makes calls to data, kfoldcv,
+        hyperparameterTuning, hypothesisTest, models to conduct all discussed steps
+        regarding model selection.
     \end{enumerate}
 
 

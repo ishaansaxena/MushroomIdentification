@@ -70,7 +70,7 @@ if __name__ == '__main__':
         }, index = folds)
 
         lines = df.plot.line()
-        filename = "results" + "model_accuracy_vs_folds_" + name + ".png"
+        filename = "results/" + "model_accuracy_vs_folds_" + name + ".png"
         plt.title(name + str(best_hyperparams))
         plt.ylim(0,1.01)
         plt.savefig(filename, bbox_inches='tight')

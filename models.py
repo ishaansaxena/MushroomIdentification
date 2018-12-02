@@ -10,7 +10,7 @@ def get_model_list():
 
     # AdaBoostClassifier
     models.append(("Adaboost", AdaBoostClassifier, {
-        'n_estimators': [3, 5, 10, 20, 50],
+        'n_estimators': [3, 5, 10, 15, 20],
         'learning_rate': [0.1, 0.5, 1],
         'algorithm': ['SAMME', 'SAMME.R']
     }))
@@ -18,14 +18,14 @@ def get_model_list():
     # SVM
     models.append(("SVM-linear", SVC, {
         'kernel': ['linear'],
-        'C': [0.01, 0.05, 0.1, 1],
+        'C': [0.01, 0.05, 0.1, 1, 10],
     }))
 
-    models.append(("SVM-poly", SVC, {
-        'kernel': ['poly'],
-        'C': [0.01, 0.05, 0.1, 1],
-        'degree': [2, 3, 4]
-    }))
+    # models.append(("SVM-poly", SVC, {
+    #     'kernel': ['poly'],
+    #     'C': [0.01, 0.05, 0.1, 1],
+    #     'degree': [2, 3, 4]
+    # }))
 
     models.append(("SVM-rbf", SVC, {
         'kernel': ['rbf'],

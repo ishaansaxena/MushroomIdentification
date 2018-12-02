@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1543718135 "report.tex" "report.pdf" "report" 1543718136
+["pdflatex"] 1543723052 "report.tex" "report.pdf" "report" 1543723054
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -173,12 +173,18 @@
   "img/model_accuracy_vs_folds_SVM-linear.png" 1543712501 21559 19f02fc46b77c173d9a7fc94586554ed ""
   "img/model_accuracy_vs_folds_SVM-poly.png" 1543712513 24215 ab57dbe53b75f56310ddfd9063b3796f ""
   "img/model_accuracy_vs_folds_SVM-rbf.png" 1543712517 21687 01c91d792abc74f820a219c2d8fd5ae6 ""
+  "img/roc_Adaboost.png" 1543722622 35250 ec8d97683ffa7b55f7f210813f3da117 ""
+  "img/roc_LR.png" 1543722622 36848 b4f0d3e21993a0e6b47ed9afbb8efe85 ""
+  "img/roc_SVM-Linear.png" 1543722622 34973 49a89487694dd6d1661a674364a74ca4 ""
+  "img/roc_SVM-Poly.png" 1543722909 35978 fa8da26d4e1e857c8325356f103ad3e1 ""
+  "img/roc_SVM-RBF.png" 1543723015 35499 6e8f727523b9e949f5e06c7e33a9822d ""
   "img/tvt.png" 1543708253 16714 571e9d99615dc72a27d2c8a34c50f8ae ""
-  "report.aux" 1543718136 3337 bc9b4060304673f5d620c46740361a01 ""
-  "report.out" 1543718136 1581 612a15d74d26a69b9b70ee460597406c ""
-  "report.tex" 1543718127 30698 c16516b47f6fe450f0e0e81f8615414c ""
+  "img/vc.png" 1543719792 188061 a3947ab3be5c665055a69413134b7b37 ""
+  "report.aux" 1543723054 3516 2f4d3e3ef7f3e76a69253627e491721a ""
+  "report.out" 1543723054 1687 252722dac78baf3682179a757aa862f6 ""
+  "report.tex" 1543723052 35332 02fdc8400af01991649186cd092ceaec ""
   (generated)
-  "report.log"
   "report.aux"
+  "report.log"
   "report.pdf"
   "report.out"
