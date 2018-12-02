@@ -1,0 +1,31 @@
+Files:
+    Driver file: modelSelection.py
+    This file gets encoded data with reduced features, and then runs the entire pipeline
+    as described in section 2 of the report. The following local modules are called by
+    this file:
+        - data.py
+        - hyperParameterTuning.py
+        - hypothesisTest.py
+        - kfoldcv.py
+
+    featureSelectionPlot.py
+    This file creates the plot for features vs weights as in section 3.
+
+    models.py
+    Contains all the models and sets of hyperparameters which have to be tuned for each
+    model.
+
+External libraries:
+    sklearn
+    numpy
+    scipy
+    pandas
+    seaborn
+
+To download any of these dependencies:
+    pip install <library name>
+
+Please note that lines 24-28 of models.py have been commented out. These lines contain
+the SVM classifier with a polynomial kernel, which takes about 12-20 seconds to run
+hyperparameter optimization and kfold CV on. If you wish to run it, kindly uncomment these
+lines.

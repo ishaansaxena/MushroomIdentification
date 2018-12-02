@@ -1,0 +1,9 @@
+External libraries:
+    sklearn
+    numpy
+    scipy
+    pandas
+    seaborn
+
+To download any of these dependencies:
+    pip install <library name>
